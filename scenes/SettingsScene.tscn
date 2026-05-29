@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_controller.gd" id="1_settings"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="3_bg"]
+
+[node name="SettingsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_settings")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("3_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 44
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 44
+
+[node name="SettingsPanel" type="PanelContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelMargin" type="MarginContainer" parent="RootMargin/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 28
+
+[node name="RootBox" type="VBoxContainer" parent="RootMargin/SettingsPanel/PanelMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="RootMargin/SettingsPanel/PanelMargin/RootBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Настройки"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="RootMargin/SettingsPanel/PanelMargin/RootBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Прогресс"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="AudioPanel" type="PanelContainer" parent="RootMargin/SettingsPanel/PanelMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioMargin" type="MarginContainer" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="AudioBox" type="VBoxContainer" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="MusicButton" type="Button" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin/AudioBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(430, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Музыка"
+
+[node name="MusicVolumeLabel" type="Label" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin/AudioBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Громкость музыки: 65%"
+
+[node name="MusicSlider" type="HSlider" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin/AudioBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 28)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 65.0
+
+[node name="SoundButton" type="Button" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin/AudioBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(430, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Звуки"
+
+[node name="SoundVolumeLabel" type="Label" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin/AudioBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Громкость звуков: 70%"
+
+[node name="SoundSlider" type="HSlider" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/AudioPanel/AudioMargin/AudioBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 28)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 70.0
+
+[node name="Actions" type="HBoxContainer" parent="RootMargin/SettingsPanel/PanelMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Сбросить прогресс"
+
+[node name="BackButton" type="Button" parent="RootMargin/SettingsPanel/PanelMargin/RootBox/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Назад"

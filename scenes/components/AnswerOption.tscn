@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/answer_option.gd" id="1_answer_option"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+
+[node name="AnswerOption" type="Button"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_theme")
+theme_override_font_sizes/font_size = 18
+text = "Вариант ответа"
+autowrap_mode = 3
+alignment = 0
+script = ExtResource("1_answer_option")

@@ -1,0 +1,154 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/lesson_controller.gd" id="1_lesson"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/PythonConsole.tscn" id="3_python_console"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="4_bg"]
+
+[node name="LessonScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_lesson")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("4_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 46
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 46
+theme_override_constants/margin_bottom = 24
+
+[node name="RootLayout" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="HeaderPanel" type="PanelContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeaderMargin" type="MarginContainer" parent="RootMargin/RootLayout/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 14
+
+[node name="TitleLabel" type="Label" parent="RootMargin/RootLayout/HeaderPanel/HeaderMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Урок"
+horizontal_alignment = 1
+
+[node name="ContentScroll" type="ScrollContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContentBox" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="LessonPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LessonMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/LessonPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 24
+
+[node name="LessonContent" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/LessonPanel/LessonMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="SectionTitleTheory" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/LessonPanel/LessonMargin/LessonContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Теория и пояснение"
+
+[node name="BodyLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/LessonPanel/LessonMargin/LessonContent"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Теоретический материал"
+autowrap_mode = 3
+
+[node name="ObjectivesPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectivesMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/ObjectivesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="ObjectivesLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/ObjectivesPanel/ObjectivesMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Цели урока"
+autowrap_mode = 3
+
+[node name="ConsoleTitle" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Пример в Python-интерпретаторе"
+horizontal_alignment = 1
+
+[node name="ExampleConsole" parent="RootMargin/RootLayout/ContentScroll/ContentBox" instance=ExtResource("3_python_console")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterPanel" type="PanelContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterMargin" type="MarginContainer" parent="RootMargin/RootLayout/FooterPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Footer" type="HBoxContainer" parent="RootMargin/RootLayout/FooterPanel/FooterMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="BackButton" type="Button" parent="RootMargin/RootLayout/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Назад к карте"
+
+[node name="TaskButton" type="Button" parent="RootMargin/RootLayout/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Перейти к практике"

@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://b0ww4bmrvi4iv"]
+
+[ext_resource type="Script" uid="uid://dsdfdklunmkuj" path="res://scripts/ui/main_menu_controller.gd" id="1_main_menu"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="3_bg"]
+[ext_resource type="Texture2D" uid="uid://4knpwbmr4ay" path="res://assets/ui/pyquest_emblem.png" id="4_emblem"]
+
+[node name="MainMenu" type="Control" unique_id=2122411218]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_main_menu")
+
+[node name="AnimatedBackground" parent="." unique_id=608966472 instance=ExtResource("3_bg")]
+
+[node name="RootMargin" type="MarginContainer" parent="." unique_id=1557826078]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 26
+
+[node name="MenuCenter" type="CenterContainer" parent="RootMargin" unique_id=380778485]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuPanel" type="PanelContainer" parent="RootMargin/MenuCenter" unique_id=490732435]
+custom_minimum_size = Vector2(880, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MenuMargin" type="MarginContainer" parent="RootMargin/MenuCenter/MenuPanel" unique_id=2130190366]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 24
+
+[node name="MainBox" type="VBoxContainer" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin" unique_id=1793383194]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TopRow" type="HBoxContainer" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=267766389]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Emblem" type="TextureRect" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/TopRow" unique_id=1438887834]
+custom_minimum_size = Vector2(116, 116)
+layout_mode = 2
+texture = ExtResource("4_emblem")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleColumn" type="VBoxContainer" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/TopRow" unique_id=151778797]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/TopRow/TitleColumn" unique_id=657343440]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "PyQuest"
+
+[node name="SubtitleLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/TopRow/TitleColumn" unique_id=846037846]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Игровой тренажёр по Python"
+
+[node name="DescriptionLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=1634453842]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Проходи кампанию, запускай код в учебном интерпретаторе, исправляй ошибки и открывай темы Python - от базы до продвинутых инструментов."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="StatusPanel" type="PanelContainer" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=709439201]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusMargin" type="MarginContainer" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/StatusPanel" unique_id=537095689]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 9
+
+[node name="StatusLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/StatusPanel/StatusMargin" unique_id=1609215921]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Очки: 0   Ошибки: 0   Открыт уровень: 1"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MenuTitle" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=2115992790]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Главное меню"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="GridContainer" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=1528118198]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="NewGameButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=2132865759]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Новая игра"
+
+[node name="ContinueButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=427465047]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Продолжить"
+
+[node name="LevelMapButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=2110675086]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Карта уровней"
+
+[node name="CodexButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=161435129]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Справочник Python"
+
+[node name="SettingsButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=419350092]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Настройки"
+
+[node name="ExitButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=212039237]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Выход"
+
+[node name="VersionLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=1905271354]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "v0.1 prototype"
+horizontal_alignment = 1

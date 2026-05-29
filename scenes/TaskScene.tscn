@@ -1,0 +1,316 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/task_controller.gd" id="1_task"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/PythonConsole.tscn" id="3_python_console"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="4_bg"]
+
+[node name="TaskScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_task")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("4_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 20
+
+[node name="RootLayout" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="HeaderPanel" type="PanelContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeaderMargin" type="MarginContainer" parent="RootMargin/RootLayout/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 12
+
+[node name="HeaderBox" type="VBoxContainer" parent="RootMargin/RootLayout/HeaderPanel/HeaderMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="RootMargin/RootLayout/HeaderPanel/HeaderMargin/HeaderBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Задание уровня"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootMargin/RootLayout/HeaderPanel/HeaderMargin/HeaderBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Тип задания"
+horizontal_alignment = 1
+
+[node name="ContentScroll" type="ScrollContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContentBox" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="QuestionPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestionMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/QuestionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="QuestionLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/QuestionPanel/QuestionMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Текст задания"
+autowrap_mode = 3
+
+[node name="HintPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HintMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/HintPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 14
+
+[node name="HintLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/HintPanel/HintMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Подсказка"
+autowrap_mode = 3
+
+[node name="TaskContent" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="ChoicePanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChoiceMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/ChoicePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="ChoiceList" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/ChoicePanel/ChoiceMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="TextInputPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextInputMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/TextInputPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextInputBox" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/TextInputPanel/TextInputMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="InputHintLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/TextInputPanel/TextInputMargin/TextInputBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Введите ответ в поле ниже. Лишние пробелы по краям не учитываются."
+autowrap_mode = 3
+
+[node name="AnswerInput" type="LineEdit" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/TextInputPanel/TextInputMargin/TextInputBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Введите ответ"
+
+[node name="CheckInputButton" type="Button" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/TextInputPanel/TextInputMargin/TextInputBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Проверить"
+
+[node name="CodeOrderPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CodeOrderMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CodeOrderBox" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="CodeOrderHintLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Нажимайте на блоки кода в правильном порядке. Собранный код появится ниже."
+autowrap_mode = 3
+
+[node name="CodeTokenScroll" type="ScrollContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox"]
+custom_minimum_size = Vector2(0, 146)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="CodeTokenList" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox/CodeTokenScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="AssembledCode" type="TextEdit" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+editable = false
+placeholder_text = "Здесь появится собранный код"
+
+[node name="CodeOrderButtons" type="HBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ClearCodeButton" type="Button" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox/CodeOrderButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Очистить"
+
+[node name="CheckCodeButton" type="Button" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent/CodeOrderPanel/CodeOrderMargin/CodeOrderBox/CodeOrderButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Проверить код"
+
+[node name="CodeInputPanel" parent="RootMargin/RootLayout/ContentScroll/ContentBox/TaskContent" instance=ExtResource("3_python_console")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="ResultPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResultMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/ResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 16
+
+[node name="ResultLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/ResultPanel/ResultMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Результат ответа"
+autowrap_mode = 3
+
+[node name="FooterPanel" type="PanelContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterMargin" type="MarginContainer" parent="RootMargin/RootLayout/FooterPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="Footer" type="HBoxContainer" parent="RootMargin/RootLayout/FooterPanel/FooterMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BackButton" type="Button" parent="RootMargin/RootLayout/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(206, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Назад к уроку"
+
+[node name="RetryButton" type="Button" parent="RootMargin/RootLayout/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(178, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Повторить"
+
+[node name="HintButton" type="Button" parent="RootMargin/RootLayout/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(178, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Подсказка"
+
+[node name="ResultButton" type="Button" parent="RootMargin/RootLayout/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "К результату"
+disabled = true

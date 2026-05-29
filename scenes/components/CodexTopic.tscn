@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/codex_topic.gd" id="1_codex_topic"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+
+[node name="CodexTopic" type="Button"]
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_theme")
+theme_override_font_sizes/font_size = 15
+text = "Тема справочника"
+autowrap_mode = 3
+alignment = 0
+script = ExtResource("1_codex_topic")

@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/final_controller.gd" id="1_final"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="3_bg"]
+
+[node name="FinalScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_final")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("3_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 48
+
+[node name="MainPanel" type="PanelContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelMargin" type="MarginContainer" parent="RootMargin/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 30
+
+[node name="RootBox" type="VBoxContainer" parent="RootMargin/MainPanel/PanelMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Итоги обучения"
+horizontal_alignment = 1
+
+[node name="SummaryLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Сводка"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="AchievementsPanel" type="PanelContainer" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AchievementsMargin" type="MarginContainer" parent="RootMargin/MainPanel/PanelMargin/RootBox/AchievementsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="AchievementsLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox/AchievementsPanel/AchievementsMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Достижения"
+autowrap_mode = 3
+
+[node name="ConclusionLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Вывод"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="MapButton" type="Button" parent="RootMargin/MainPanel/PanelMargin/RootBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Карта"
+
+[node name="MenuButton" type="Button" parent="RootMargin/MainPanel/PanelMargin/RootBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Меню"
+
+[node name="RestartButton" type="Button" parent="RootMargin/MainPanel/PanelMargin/RootBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Начать заново"

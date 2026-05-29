@@ -1,0 +1,124 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/result_controller.gd" id="1_result"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="3_bg"]
+
+[node name="ResultScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_result")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("3_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 46
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 46
+
+[node name="RootBox" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ResultPanel" type="PanelContainer" parent="RootMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResultMargin" type="MarginContainer" parent="RootMargin/RootBox/ResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 30
+
+[node name="ContentBox" type="VBoxContainer" parent="RootMargin/RootBox/ResultPanel/ResultMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Результат"
+horizontal_alignment = 1
+
+[node name="SummaryLabel" type="Label" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Сводка"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="ExplanationPanel" type="PanelContainer" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExplanationMargin" type="MarginContainer" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox/ExplanationPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 18
+
+[node name="ExplanationLabel" type="Label" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox/ExplanationPanel/ExplanationMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Разбор ответа"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Повторить"
+
+[node name="NextButton" type="Button" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Далее"
+
+[node name="MapButton" type="Button" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Карта"
+
+[node name="MenuButton" type="Button" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Меню"

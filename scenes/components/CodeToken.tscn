@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/code_token.gd" id="1_code_token"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+
+[node name="CodeToken" type="Button"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_theme")
+theme_override_font_sizes/font_size = 17
+text = "code token"
+autowrap_mode = 3
+alignment = 0
+script = ExtResource("1_code_token")

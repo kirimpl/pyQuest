@@ -1,0 +1,129 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/python_console.gd" id="1_python_console"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+
+[node name="PythonConsole" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 392)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_theme")
+script = ExtResource("1_python_console")
+
+[node name="ConsoleRoot" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HeaderPanel" type="PanelContainer" parent="ConsoleRoot"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeaderMargin" type="MarginContainer" parent="ConsoleRoot/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="HeaderRow" type="HBoxContainer" parent="ConsoleRoot/HeaderPanel/HeaderMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 0
+
+[node name="RedDot" type="ColorRect" parent="ConsoleRoot/HeaderPanel/HeaderMargin/HeaderRow"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+color = Color(0.960784, 0.294118, 0.360784, 1)
+
+[node name="YellowDot" type="ColorRect" parent="ConsoleRoot/HeaderPanel/HeaderMargin/HeaderRow"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+color = Color(0.964706, 0.745098, 0.282353, 1)
+
+[node name="GreenDot" type="ColorRect" parent="ConsoleRoot/HeaderPanel/HeaderMargin/HeaderRow"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+color = Color(0.282353, 0.843137, 0.596078, 1)
+
+[node name="ConsoleTitleLabel" type="Label" parent="ConsoleRoot/HeaderPanel/HeaderMargin/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 17
+text = "Python 3.12 - main.py"
+vertical_alignment = 1
+
+[node name="RunCodeButton" type="Button" parent="ConsoleRoot/HeaderPanel/HeaderMargin/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(126, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "▶ Run"
+
+[node name="ClearConsoleButton" type="Button" parent="ConsoleRoot/HeaderPanel/HeaderMargin/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Очистить"
+
+[node name="BodyMargin" type="MarginContainer" parent="ConsoleRoot"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="BodyBox" type="VBoxContainer" parent="ConsoleRoot/BodyMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="EditorTopRow" type="HBoxContainer" parent="ConsoleRoot/BodyMargin/BodyBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="EditorLabel" type="Label" parent="ConsoleRoot/BodyMargin/BodyBox/EditorTopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "main.py"
+
+[node name="EditorHint" type="Label" parent="ConsoleRoot/BodyMargin/BodyBox/EditorTopRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "режим учебного интерпретатора"
+horizontal_alignment = 2
+
+[node name="CodeInput" type="TextEdit" parent="ConsoleRoot/BodyMargin/BodyBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 142)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Введите Python-код здесь..."
+wrap_mode = 0
+
+[node name="OutputLabel" type="Label" parent="ConsoleRoot/BodyMargin/BodyBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Console output"
+
+[node name="ConsoleOutput" type="TextEdit" parent="ConsoleRoot/BodyMargin/BodyBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 17
+editable = false
+text = "Python 3.12.0 (PyQuest simulator)\n>>> run main.py"
+wrap_mode = 0

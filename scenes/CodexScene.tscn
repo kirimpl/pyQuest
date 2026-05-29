@@ -1,0 +1,183 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/codex_controller.gd" id="1_codex"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/PythonConsole.tscn" id="3_python_console"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="4_bg"]
+
+[node name="CodexScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_codex")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("4_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 24
+
+[node name="RootBox" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="HeaderPanel" type="PanelContainer" parent="RootMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeaderMargin" type="MarginContainer" parent="RootMargin/RootBox/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 14
+
+[node name="HeaderBox" type="VBoxContainer" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="TitleLabel" type="Label" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin/HeaderBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Справочник Python"
+horizontal_alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin/HeaderBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Прогресс"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="MainSplit" type="HBoxContainer" parent="RootMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="TopicsPanel" type="PanelContainer" parent="RootMargin/RootBox/MainSplit"]
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="TopicsMargin" type="MarginContainer" parent="RootMargin/RootBox/MainSplit/TopicsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="TopicsScroll" type="ScrollContainer" parent="RootMargin/RootBox/MainSplit/TopicsPanel/TopicsMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TopicList" type="VBoxContainer" parent="RootMargin/RootBox/MainSplit/TopicsPanel/TopicsMargin/TopicsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ContentPanel" type="PanelContainer" parent="RootMargin/RootBox/MainSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContentMargin" type="MarginContainer" parent="RootMargin/RootBox/MainSplit/ContentPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="ContentScroll" type="ScrollContainer" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContentBox" type="VBoxContainer" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin/ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="BodyLabel" type="Label" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin/ContentScroll/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Материал"
+autowrap_mode = 3
+
+[node name="ObjectivesPanel" type="PanelContainer" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin/ContentScroll/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectivesMargin" type="MarginContainer" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin/ContentScroll/ContentBox/ObjectivesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="ObjectivesLabel" type="Label" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin/ContentScroll/ContentBox/ObjectivesPanel/ObjectivesMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Коротко"
+autowrap_mode = 3
+
+[node name="ExampleConsole" parent="RootMargin/RootBox/MainSplit/ContentPanel/ContentMargin/ContentScroll/ContentBox" instance=ExtResource("3_python_console")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterPanel" type="PanelContainer" parent="RootMargin/RootBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterMargin" type="MarginContainer" parent="RootMargin/RootBox/FooterPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Footer" type="HBoxContainer" parent="RootMargin/RootBox/FooterPanel/FooterMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="MapButton" type="Button" parent="RootMargin/RootBox/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Карта уровней"
+
+[node name="MenuButton" type="Button" parent="RootMargin/RootBox/FooterPanel/FooterMargin/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Главное меню"

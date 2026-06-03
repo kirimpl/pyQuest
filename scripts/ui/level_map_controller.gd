@@ -36,43 +36,69 @@ func _update_grid_columns() -> void:
 	if level_grid == null:
 		return
 	var width_value: float = size.x if size.x > 0.0 else get_viewport_rect().size.x
-	level_grid.columns = 2 if width_value >= 1180.0 else 1
+	if width_value >= 1760.0:
+		level_grid.columns = 4
+	elif width_value >= 1280.0:
+		level_grid.columns = 3
+	elif width_value >= 900.0:
+		level_grid.columns = 2
+	else:
+		level_grid.columns = 1
 
 func _build_level_cards() -> void:
 	for child in level_grid.get_children():
-		child.queue_free()
+		child.free()
 
-	for item in ContentRepository.get_lessons():
-		if typeof(item) != TYPE_DICTIONARY:
-			continue
-		var lesson: Dictionary = item
-		var level: int = int(lesson.get("level", 1))
+	var chapter_totals: Dictionary = _get_chapter_totals()
+	var chapter_completed: Dictionary = _get_chapter_completed_counts()
+	for level_number in range(1, CodeWorldService.get_level_count() + 1):
+		var level_data: Dictionary = CodeWorldService.get_level(level_number)
+		var chapter: String = str(level_data.get("chapter", "Кампания"))
 		var card: LevelCard = LEVEL_CARD_SCENE.instantiate() as LevelCard
 		level_grid.add_child(card)
-		card.setup(lesson, AppState.can_open_level(level), AppState.is_level_completed(level), ContentRepository.get_task_count_for_level(level), ContentRepository.get_completed_task_count_for_level(level))
+		card.setup(level_data, AppState.can_open_level(level_number), AppState.is_level_completed(level_number), int(chapter_totals.get(chapter, 1)), int(chapter_completed.get(chapter, 0)))
 		card.level_selected.connect(_on_level_selected)
 
-	var lesson_count: int = ContentRepository.get_max_level()
-	scroll_hint_label.text = "Прокрути вниз, чтобы увидеть все темы курса." if lesson_count > 6 else ""
+	scroll_hint_label.text = "35 программируемых секторов · финальный сектор выделен отдельно."
+
+func _get_chapter_totals() -> Dictionary:
+	var totals: Dictionary = {}
+	for level_number in range(1, CodeWorldService.get_level_count() + 1):
+		var level_data: Dictionary = CodeWorldService.get_level(level_number)
+		var chapter: String = str(level_data.get("chapter", "Кампания"))
+		totals[chapter] = int(totals.get(chapter, 0)) + 1
+	return totals
+
+func _get_chapter_completed_counts() -> Dictionary:
+	var completed: Dictionary = {}
+	for level_number in range(1, CodeWorldService.get_level_count() + 1):
+		var level_data: Dictionary = CodeWorldService.get_level(level_number)
+		var chapter: String = str(level_data.get("chapter", "Кампания"))
+		if not completed.has(chapter):
+			completed[chapter] = 0
+		if AppState.is_level_completed(level_number):
+			completed[chapter] = int(completed.get(chapter, 0)) + 1
+	return completed
 
 func _update_progress_label() -> void:
-	progress_label.text = "Очки: %d   Ошибки: %d   Пройдено уровней: %d/%d   Заданий: %d/%d" % [
+	progress_label.text = "Code Adventure · Пройдено: %d/%d · Звёзды: %d/%d · Очки: %d · Ошибки: %d · Запусков кода: %d" % [
+		AppState.completed_levels.size(),
+		CodeWorldService.get_level_count(),
+		AppState.get_total_code_stars(),
+		CodeWorldService.get_level_count() * 3,
 		AppState.score,
 		AppState.mistakes,
-		AppState.completed_levels.size(),
-		ContentRepository.get_max_level(),
-		ContentRepository.get_completed_task_count(),
-		ContentRepository.get_total_task_count()
+		AppState.get_total_code_attempts()
 	]
 
-	story_label.text = "Курс PyQuest построен как длинная учебная кампания. Сначала открывай урок, затем проходи практику. Если остановишься на середине уровня, игра продолжит с первого невыполненного задания. Чем дальше ты продвигаешься, тем больше тем Python открывается - от базового print() до генераторов, декораторов и итоговой практики."
+	story_label.text = "Выбери открытый сектор, составь программу героя и восстанови узел. Результат оценивается звёздами за эффективность маршрута."
 	final_button.disabled = false
-	final_button.text = "Итоги"
+	final_button.text = "Итоги кампании"
 
 func _on_level_selected(level: int) -> void:
 	if AppState.select_level(level):
 		AppState.clear_last_result()
-		SceneRouter.go_to_lesson()
+		SceneRouter.go_to_code_game()
 
 func _on_final_pressed() -> void:
 	SceneRouter.go_to_final()

@@ -24,10 +24,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 48
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 12
 
 [node name="MainPanel" type="PanelContainer" parent="RootMargin"]
 layout_mode = 2
@@ -36,30 +36,30 @@ size_flags_vertical = 3
 
 [node name="PanelMargin" type="MarginContainer" parent="RootMargin/MainPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 34
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 34
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 14
 
 [node name="RootBox" type="VBoxContainer" parent="RootMargin/MainPanel/PanelMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 16
-alignment = 1
+theme_override_constants/separation = 7
+alignment = 0
 
 [node name="TitleLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Итоги обучения"
+theme_override_font_sizes/font_size = 32
+text = "Итоги кампании"
 horizontal_alignment = 1
 
 [node name="SummaryLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 21
-text = "Сводка"
+theme_override_font_sizes/font_size = 16
+text = "Сводка прохождения"
 autowrap_mode = 3
 horizontal_alignment = 1
 
@@ -70,22 +70,22 @@ size_flags_horizontal = 3
 [node name="AchievementsMargin" type="MarginContainer" parent="RootMargin/MainPanel/PanelMargin/RootBox/AchievementsPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 18
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 18
+theme_override_constants/margin_bottom = 8
 
 [node name="AchievementsLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox/AchievementsPanel/AchievementsMargin"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 19
-text = "Достижения"
+theme_override_font_sizes/font_size = 15
+text = "Достижения кампании"
 autowrap_mode = 3
 
 [node name="ConclusionLabel" type="Label" parent="RootMargin/MainPanel/PanelMargin/RootBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 19
-text = "Вывод"
+theme_override_font_sizes/font_size = 15
+text = "Финальный отчёт"
 autowrap_mode = 3
 horizontal_alignment = 1
 
@@ -97,21 +97,21 @@ alignment = 1
 
 [node name="MapButton" type="Button" parent="RootMargin/MainPanel/PanelMargin/RootBox/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(230, 50)
+custom_minimum_size = Vector2(180, 38)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Карта"
 
 [node name="MenuButton" type="Button" parent="RootMargin/MainPanel/PanelMargin/RootBox/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(230, 50)
+custom_minimum_size = Vector2(180, 38)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Меню"
 
 [node name="RestartButton" type="Button" parent="RootMargin/MainPanel/PanelMargin/RootBox/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 50)
+custom_minimum_size = Vector2(200, 38)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Начать заново"

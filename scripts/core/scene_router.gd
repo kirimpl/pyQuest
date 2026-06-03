@@ -8,6 +8,7 @@ const RESULT: String = "res://scenes/ResultScene.tscn"
 const SETTINGS: String = "res://scenes/SettingsScene.tscn"
 const FINAL: String = "res://scenes/FinalScene.tscn"
 const CODEX: String = "res://scenes/CodexScene.tscn"
+const COMMAND_GAME: String = "res://scenes/CommandGameScene.tscn"
 
 func go_to_main_menu() -> void:
 	get_tree().change_scene_to_file(MAIN_MENU)
@@ -32,3 +33,6 @@ func go_to_final() -> void:
 
 func go_to_codex() -> void:
 	get_tree().change_scene_to_file(CODEX)
+
+func go_to_code_game() -> void:
+	get_tree().change_scene_to_file(COMMAND_GAME)

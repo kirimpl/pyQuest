@@ -24,16 +24,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 16
 
 [node name="RootBox" type="VBoxContainer" parent="RootMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 14
+theme_override_constants/separation = 10
 
 [node name="HeaderPanel" type="PanelContainer" parent="RootMargin/RootBox"]
 layout_mode = 2
@@ -41,41 +41,41 @@ size_flags_horizontal = 3
 
 [node name="HeaderMargin" type="MarginContainer" parent="RootMargin/RootBox/HeaderPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 14
 
 [node name="HeaderBox" type="VBoxContainer" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
 [node name="TitleLabel" type="Label" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin/HeaderBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Карта обучения"
+theme_override_font_sizes/font_size = 34
+text = "Карта кампании"
 horizontal_alignment = 1
 
 [node name="ProgressLabel" type="Label" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin/HeaderBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Очки: 0   Ошибки: 0   Пройдено уровней: 0/35"
 autowrap_mode = 3
 horizontal_alignment = 1
 
 [node name="HintLabel" type="Label" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin/HeaderBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Выбери открытую тему. Новые уровни открываются после выполнения всей практики предыдущего уровня."
+theme_override_font_sizes/font_size = 14
+text = "Выбери открытый сектор. Новые сектора открываются после стабилизации предыдущей миссии."
 autowrap_mode = 3
 horizontal_alignment = 1
 
 [node name="StoryLabel" type="Label" parent="RootMargin/RootBox/HeaderPanel/HeaderMargin/HeaderBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 14
 text = "Маршрут обучения"
 autowrap_mode = 3
 horizontal_alignment = 1
@@ -89,21 +89,21 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_bottom = 14
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
 [node name="LevelsOuterBox" type="VBoxContainer" parent="RootMargin/RootBox/LevelsPanel/LevelsOuterMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="ScrollHintLabel" type="Label" parent="RootMargin/RootBox/LevelsPanel/LevelsOuterMargin/LevelsOuterBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 14
 text = "Прокрути вниз, чтобы увидеть все темы курса."
 horizontal_alignment = 1
 
@@ -129,35 +129,35 @@ size_flags_horizontal = 3
 
 [node name="FooterMargin" type="MarginContainer" parent="RootMargin/RootBox/FooterPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
 
 [node name="Footer" type="HBoxContainer" parent="RootMargin/RootBox/FooterPanel/FooterMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 18
+theme_override_constants/separation = 14
 alignment = 1
 
 [node name="CodexButton" type="Button" parent="RootMargin/RootBox/FooterPanel/FooterMargin/Footer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(230, 48)
+custom_minimum_size = Vector2(210, 44)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Справочник"
 
 [node name="FinalButton" type="Button" parent="RootMargin/RootBox/FooterPanel/FooterMargin/Footer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(230, 48)
+custom_minimum_size = Vector2(210, 44)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Итоги"
 disabled = true
 
 [node name="BackButton" type="Button" parent="RootMargin/RootBox/FooterPanel/FooterMargin/Footer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 48)
+custom_minimum_size = Vector2(260, 44)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Главное меню"

@@ -1,0 +1,1552 @@
+[
+  {
+    "level": 1,
+    "title": "Сектор 01: Введение в Python",
+    "topic": "Введение в Python",
+    "mechanic": "маршрут и сбор предметов",
+    "briefing": "Глава 1: базовое управление. Введение в Python применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "собрать кристалл данных и дойти до выхода X",
+    "grid": [
+      "##########",
+      "#P..G...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true
+    },
+    "starter_code": "# Сектор 01: Введение в Python\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n",
+    "solution_code": "hero.move_right()\nhero.move_right()\nhero.move_right()\nhero.collect()\nhero.move_right()\nhero.move_right()\nhero.move_right()\nhero.move_right()\n",
+    "hint": "Кристалл находится на пути. Сначала дойди до него, вызови hero.collect(), затем продолжай движение к X.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 01 восстановлен: Введение в Python.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 1: базовое управление",
+    "difficulty": "обучающая",
+    "min_steps": 8,
+    "objectives": [
+      "собрать все доступные кристаллы и ключи",
+      "довести героя до выхода X",
+      "использовать тему уровня в коде, а не просто набор случайных команд"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Кристалл находится на пути. Сначала дойди до него, вызови hero.collect(), затем продолжай движение к X."
+    ],
+    "icon": "res://assets/icons/levels/01_intro_small.png"
+  },
+  {
+    "level": 2,
+    "title": "Сектор 02: Переменные",
+    "topic": "Переменные",
+    "mechanic": "переменная маршрута и счётчик шагов",
+    "briefing": "В секторе переменных маршрут хранится в значении steps. Пользователь задаёт число повторений и использует его в цикле, чтобы герой дошёл до ключа, открыл шлюз и вышел.",
+    "goal": "получить ключ, открыть шлюз и выйти из сектора",
+    "grid": [
+      "##########",
+      "#P.KD...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "source_contains": [
+        "steps_to_key"
+      ]
+    },
+    "starter_code": "# Сектор 02: Переменные\n# Сохрани количество шагов в переменной и используй её в цикле.\n\nhero.scan()\n\nsteps_to_key = 2\n# for i in range(steps_to_key):\n#     hero.move_right()\n",
+    "solution_code": "steps_to_key = 2\nfor i in range(steps_to_key):\n    hero.move_right()\nhero.collect()\n\nif hero.has_key():\n    hero.open_gate()\n\nsteps_to_exit = 5\nfor i in range(steps_to_exit):\n    hero.move_right()\n",
+    "hint": "Сохрани количество шагов в переменной steps, затем используй range(steps). Переменная должна реально управлять маршрутом.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 02 восстановлен: Переменные.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 1: базовое управление",
+    "difficulty": "обучающая",
+    "min_steps": 9,
+    "objectives": [
+      "использовать переменную для количества шагов",
+      "получить ключ",
+      "открыть шлюз и выйти из сектора"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Ключ лежит перед шлюзом. Собери его командой hero.collect(), а затем открой дверь через hero.open_gate()."
+    ],
+    "icon": "res://assets/icons/levels/02_variables_small.png"
+  },
+  {
+    "level": 3,
+    "title": "Сектор 03: Типы данных",
+    "topic": "Типы данных",
+    "mechanic": "тип данных как режим обработки препятствия",
+    "briefing": "В секторе типов данных симулятор проверяет, что игрок различает строковое значение и использует его для выбора действия. Баг блокирует путь, поэтому перед атакой задаётся тип команды.",
+    "goal": "устранить баг, который блокирует путь, и дойти до X",
+    "grid": [
+      "##########",
+      "#P.E....X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "defeat_all": true,
+      "source_contains": [
+        "value_type"
+      ]
+    },
+    "starter_code": "# Сектор 03: Типы данных\n# Тип значения помогает выбрать правильное действие.\n\nhero.scan()\n\nvalue_type = \"str\"\n# if value_type == \"str\" and hero.sees_enemy():\n#     hero.attack()\n",
+    "solution_code": "value_type = \"str\"\n\nhero.move_right()\nif value_type == \"str\" and hero.sees_enemy():\n    hero.attack()\n\nfor i in range(6):\n    hero.move_right()\n",
+    "hint": "Задай переменную value_type = \"str\" и проверь её условием. После первого шага баг окажется рядом.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 03 восстановлен: Типы данных.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 1: базовое управление",
+    "difficulty": "обучающая",
+    "min_steps": 8,
+    "objectives": [
+      "использовать строковое значение как признак типа",
+      "проверить условие перед атакой",
+      "устранить баг и дойти до выхода"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Баг стоит рядом после первого шага. Проверь hero.sees_enemy() и вызови hero.attack(), иначе проход останется заблокирован."
+    ],
+    "icon": "res://assets/icons/levels/03_types_small.png"
+  },
+  {
+    "level": 4,
+    "title": "Сектор 04: Условия",
+    "topic": "Условия",
+    "mechanic": "условный доступ к терминалу и шлюзу",
+    "briefing": "Уровень посвящён условиям: герой должен не просто выполнить команды подряд, а проверить наличие терминала и шлюза перед действием.",
+    "goal": "активировать терминал, открыть шлюз и выйти",
+    "grid": [
+      "##########",
+      "#P.SD...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "if hero.near"
+      ]
+    },
+    "starter_code": "# Сектор 04: Условия\n# Проверь окружение перед активацией терминала и открытием шлюза.\n\nhero.scan()\n\n# if hero.near(\"terminal\"):\n#     hero.activate()\n",
+    "solution_code": "for i in range(2):\n    hero.move_right()\n\nif hero.near(\"terminal\"):\n    hero.activate()\n\nif hero.near(\"gate\"):\n    hero.open_gate()\n\nfor i in range(5):\n    hero.move_right()\n",
+    "hint": "Шлюз откроется без ключа, если перед этим активировать терминал S командой hero.activate().",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 04 восстановлен: Условия.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 1: базовое управление",
+    "difficulty": "обучающая",
+    "min_steps": 9,
+    "objectives": [
+      "использовать if для проверки терминала",
+      "активировать терминал",
+      "открыть шлюз и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Шлюз откроется без ключа, если перед этим активировать терминал S командой hero.activate()."
+    ],
+    "icon": "res://assets/icons/levels/04_conditions_small.png"
+  },
+  {
+    "level": 5,
+    "title": "Сектор 05: Циклы for",
+    "topic": "Циклы for",
+    "mechanic": "многошаговый маршрут",
+    "briefing": "Глава 1: базовое управление. Циклы for применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "собрать верхний кристалл, найти ключ в нижнем контуре, открыть шлюз и забрать второй кристалл",
+    "grid": [
+      "###########",
+      "#P..G.....#",
+      "###.###..##",
+      "#K..D..GX.#",
+      "###########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true
+    },
+    "starter_code": "# Сектор 05: Циклы for\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример цикла:\n# for step in ['right', 'right']:\n#     hero.move(step)\n",
+    "solution_code": "for step in [\"right\", \"right\", \"right\"]:\n    hero.move(step)\nhero.collect()\nhero.move(\"left\")\nhero.move(\"down\")\nhero.move(\"down\")\nhero.move(\"left\")\nhero.move(\"left\")\nhero.collect()\nhero.move(\"right\")\nhero.move(\"right\")\nhero.open_gate()\nfor step in [\"right\", \"right\", \"right\", \"right\"]:\n    hero.move(step)\nhero.collect()\nhero.move(\"right\")\n",
+    "hint": "Здесь два контура. Сначала забери верхний кристалл, вернись к проходу вниз, возьми ключ, открой D и только потом иди к X.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 05 восстановлен: Циклы for.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 1: базовое управление",
+    "difficulty": "обучающая",
+    "min_steps": 21,
+    "objectives": [
+      "собрать все доступные кристаллы и ключи",
+      "открыть шлюз только после получения доступа",
+      "довести героя до выхода X",
+      "использовать тему уровня в коде, а не просто набор случайных команд"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Здесь два контура. Сначала забери верхний кристалл, вернись к проходу вниз, возьми ключ, открой D и только потом иди к X."
+    ],
+    "icon": "res://assets/icons/levels/05_loops_small.png"
+  },
+  {
+    "level": 6,
+    "title": "Сектор 06: Списки и маршруты",
+    "topic": "Списки и маршруты",
+    "mechanic": "список команд маршрута",
+    "briefing": "В секторе списков маршрут задаётся массивом строк. Каждая строка описывает направление движения героя.",
+    "goal": "автоматически идти вправо, собрать кристалл и остановиться на выходе",
+    "grid": [
+      "###########",
+      "#P.....G.X#",
+      "###########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "source_contains": [
+        "route = ["
+      ]
+    },
+    "starter_code": "# Сектор 06: Списки и маршруты\n# Список хранит порядок направлений.\n\nhero.scan()\n\nroute = [\"right\", \"right\"]\n# for step in route:\n#     hero.move(step)\n",
+    "solution_code": "route = [\"right\", \"right\", \"right\", \"right\", \"right\", \"right\", \"right\"]\n\nfor step in route:\n    hero.move(step)\n    if hero.near(\"gem\"):\n        hero.collect()\n",
+    "hint": "Создай список route и пройди его через for. Для сбора кристалла используй проверку hero.near(\"gem\").",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 06 восстановлен: Списки и маршруты.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 2: маршруты и условия",
+    "difficulty": "лёгкая",
+    "min_steps": 2,
+    "objectives": [
+      "создать список маршрута",
+      "пройти маршрут циклом for",
+      "собрать кристалл и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Используй while hero.can_move(\"right\"). Внутри цикла двигайся вправо и проверяй, не оказался ли рядом кристалл."
+    ],
+    "icon": "res://assets/icons/levels/06_lists_small.png"
+  },
+  {
+    "level": 7,
+    "title": "Сектор 07: Функции",
+    "topic": "Функции",
+    "mechanic": "комбинированная миссия",
+    "briefing": "Глава 2: маршруты и условия. Функции применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "устранить баг, активировать терминал, найти ключ, открыть шлюз, собрать кристалл и завершить сектор",
+    "grid": [
+      "#############",
+      "#P..E..S....#",
+      "###.#########",
+      "#K..D...G.X.#",
+      "#############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true
+    },
+    "starter_code": "# Сектор 07: Функции\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример функции:\n# def go_right(count):\n#     for i in range(count):\n#         hero.move_right()\n",
+    "solution_code": "for step in [\"right\", \"right\"]:\n    hero.move(step)\nif hero.sees_enemy():\n    hero.attack()\nfor step in [\"right\", \"right\", \"right\", \"right\"]:\n    hero.move(step)\nhero.activate()\nfor step in [\"left\", \"left\", \"left\", \"left\"]:\n    hero.move(step)\nhero.move(\"down\")\nhero.move(\"down\")\nfor step in [\"left\", \"left\"]:\n    hero.move(step)\nhero.collect()\nfor step in [\"right\", \"right\"]:\n    hero.move(step)\nhero.open_gate()\nfor step in [\"right\", \"right\", \"right\", \"right\", \"right\"]:\n    hero.move(step)\nhero.collect()\nhero.move(\"right\")\nhero.move(\"right\")\n",
+    "hint": "Сектор проходится в несколько фаз: баг у верхнего коридора, терминал справа, затем возврат к вертикальному проходу вниз, ключ, шлюз, кристалл и выход.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 07 восстановлен: Функции.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 2: маршруты и условия",
+    "difficulty": "лёгкая",
+    "min_steps": 34,
+    "objectives": [
+      "собрать все доступные кристаллы и ключи",
+      "устранить багов командой hero.attack()",
+      "активировать терминал командой hero.activate()",
+      "открыть шлюз только после получения доступа",
+      "довести героя до выхода X",
+      "использовать тему уровня в коде, а не просто набор случайных команд"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Сектор проходится в несколько фаз: баг у верхнего коридора, терминал справа, затем возврат к вертикальному проходу вниз, ключ, шлюз, кристалл и выход."
+    ],
+    "icon": "res://assets/icons/levels/07_functions_small.png"
+  },
+  {
+    "level": 8,
+    "title": "Сектор 08: Параметры функций",
+    "topic": "Параметры функций",
+    "mechanic": "развилка, возврат и ключевой шлюз",
+    "briefing": "Глава 2: маршруты и условия. Параметры функций применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "развилка: собрать верхний кристалл, вернуться за ключом, открыть шлюз и забрать второй кристалл перед выходом",
+    "grid": [
+      "############",
+      "#P..G......#",
+      "#.####.##..#",
+      "#K..D...G.X#",
+      "############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true
+    },
+    "starter_code": "# Сектор 08: Параметры функций\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример функции:\n# def go_right(count):\n#     for i in range(count):\n#         hero.move_right()\n",
+    "solution_code": "def go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ngo(\"right\", 3)\nhero.collect()\ngo(\"left\", 3)\ngo(\"down\", 2)\nhero.collect()\ngo(\"right\", 2)\nhero.open_gate()\ngo(\"right\", 5)\nhero.collect()\ngo(\"right\", 2)\n",
+    "hint": "Сначала верхний кристалл, затем нижняя ветка с ключом. Шлюз открывается из клетки перед D.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 08 восстановлен: Параметры функций.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 2: маршруты и условия",
+    "difficulty": "лёгкая",
+    "min_steps": 18,
+    "objectives": [
+      "изучить уникальную карту сектора, а не идти по прямому коридору",
+      "выполнить все условия победы: предметы, баги, шлюзы и терминалы по требованиям уровня",
+      "использовать тему уровня в коде: цикл, условие или функцию там, где маршрут повторяется"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Сначала верхний кристалл, затем нижняя ветка с ключом. Шлюз открывается из клетки перед D."
+    ],
+    "icon": "res://assets/icons/levels/08_dicts_small.png"
+  },
+  {
+    "level": 9,
+    "title": "Сектор 09: Логические выражения",
+    "topic": "Логические выражения",
+    "mechanic": "логические выражения для проверки доступа",
+    "briefing": "Сектор проверяет логические выражения: ключ, шлюз и выход связаны условиями and/or, чтобы герой не выполнял действие вслепую.",
+    "goal": "собрать ключ, открыть два шлюза и пройти через нижний обход с двумя кристаллами",
+    "grid": [
+      "##############",
+      "#P.KD.....X..#",
+      "#.#######.####",
+      "#G..D....G...#",
+      "##############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "source_contains": [
+        " and "
+      ]
+    },
+    "starter_code": "# Сектор 09: Логические выражения\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример условия:\n# if hero.sees_enemy():\n#     hero.attack()\n",
+    "solution_code": "def go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ngo(\"right\", 2)\nhero.collect()\n\nif hero.near(\"gate\") and hero.has_key():\n    hero.open_gate()\n\ngo(\"right\", 2)\nif hero.near(\"gate\") and hero.has_key():\n    hero.open_gate()\n\nfor step in [\"right\", \"right\", \"down\", \"down\", \"right\", \"right\", \"right\"]:\n    hero.move(step)\n    if hero.near(\"gem\"):\n        hero.collect()\n",
+    "hint": "После получения ключа используй условие с and: если герой возле шлюза и ключ есть, можно открывать.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 09 восстановлен: Логические выражения.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 2: маршруты и условия",
+    "difficulty": "лёгкая",
+    "min_steps": 24,
+    "objectives": [
+      "использовать логическое выражение and",
+      "открыть два шлюза",
+      "собрать кристаллы и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Один ключ открывает два шлюза. После первого D вернись вниз: там обязательные кристаллы."
+    ],
+    "icon": "res://assets/icons/levels/09_strings_small.png"
+  },
+  {
+    "level": 10,
+    "title": "Сектор 10: Цикл while",
+    "topic": "Цикл while",
+    "mechanic": "if-проверки, баги и терминал",
+    "briefing": "Глава 2: маршруты и условия. Цикл while применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "устранить баги, собрать кристалл, активировать терминал и открыть шлюз перед выходом",
+    "grid": [
+      "#############",
+      "#P.E..G.....#",
+      "#.#####.###.#",
+      "#..E..S.D.X.#",
+      "#############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true
+    },
+    "starter_code": "# Сектор 10: Цикл while\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример цикла:\n# for step in ['right', 'right']:\n#     hero.move(step)\n\n# пример условия:\n# if hero.sees_enemy():\n#     hero.attack()\n",
+    "solution_code": "hero.move_right()\nif hero.sees_enemy():\n    hero.attack()\nfor i in range(3):\n    hero.move_right()\nhero.collect()\nfor i in range(4):\n    hero.move_left()\nhero.move_down()\nhero.move_down()\nhero.move_right()\nif hero.sees_enemy():\n    hero.attack()\nfor i in range(4):\n    hero.move_right()\nhero.activate()\nhero.move_right()\nhero.open_gate()\nfor i in range(3):\n    hero.move_right()\n",
+    "hint": "Два бага стоят в разных ветках. Перед каждым вызови if hero.sees_enemy(): hero.attack().",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 10 восстановлен: Цикл while.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 2: маршруты и условия",
+    "difficulty": "лёгкая",
+    "min_steps": 26,
+    "objectives": [
+      "изучить уникальную карту сектора, а не идти по прямому коридору",
+      "выполнить все условия победы: предметы, баги, шлюзы и терминалы по требованиям уровня",
+      "использовать тему уровня в коде: цикл, условие или функцию там, где маршрут повторяется"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Два бага стоят в разных ветках. Перед каждым вызови if hero.sees_enemy(): hero.attack()."
+    ],
+    "icon": "res://assets/icons/levels/10_tuples_sets_small.png"
+  },
+  {
+    "level": 11,
+    "title": "Сектор 11: Строки",
+    "topic": "Строки",
+    "mechanic": "строковые команды направления",
+    "briefing": "В секторе строк направления движения задаются строковыми значениями. Герой получает команды не напрямую, а из строковых переменных.",
+    "goal": "пройти лабиринт с тупиками, собрать два кристалла, активировать терминал и открыть шлюз",
+    "grid": [
+      "##############",
+      "#P..G....#..X#",
+      "#.###.#..#.#.#",
+      "#....G.S.D...#",
+      "##############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "command ="
+      ]
+    },
+    "starter_code": "# Сектор 11: Строки\n# Направления можно хранить как строки.\n\nhero.scan()\n\ncommand = \"right\"\n# hero.move(command)\n",
+    "solution_code": "command = \"right\"\nback = \"left\"\n\nfor i in range(3):\n    hero.move(command)\nhero.collect()\n\nfor i in range(3):\n    hero.move(back)\n\nfor step in [\"down\", \"down\", \"right\", \"right\", \"right\", \"right\"]:\n    hero.move(step)\n\nhero.collect()\nhero.move(command)\nhero.move(command)\nhero.activate()\nhero.move(command)\nhero.open_gate()\n\nfor i in range(4):\n    hero.move(command)\nhero.move(\"up\")\nhero.move(\"up\")\n",
+    "hint": "Сохрани направление в строку command = \"right\" и передавай его в hero.move(command).",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 11 восстановлен: Строки.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 3: данные и структуры",
+    "difficulty": "лёгкая",
+    "min_steps": 28,
+    "objectives": [
+      "использовать строковую переменную направления",
+      "передавать строку в hero.move()",
+      "восстановить маршрут сектора"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Не иди по видимому правому тупику сверху. Полный маршрут проходит через нижнюю линию с S и D."
+    ],
+    "icon": "res://assets/icons/levels/11_modules_small.png"
+  },
+  {
+    "level": 12,
+    "title": "Сектор 12: Кортежи и множества",
+    "topic": "Кортежи и множества",
+    "mechanic": "кортеж маршрута и множество целей",
+    "briefing": "Сектор связывает кортежи и множества с маршрутизацией: неизменяемый набор шагов хранит основной проход, а множество фиксирует типы объектов, которые требуется собрать.",
+    "goal": "маршрут туда-обратно: собрать верхние кристаллы, взять ключ снизу, открыть шлюз, устранить баг и выйти",
+    "grid": [
+      "##############",
+      "#P...G...G..X#",
+      "#.##########.#",
+      "#K..D....E...#",
+      "##############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "defeat_all": true,
+      "source_contains": [
+        "route_tuple",
+        "set("
+      ]
+    },
+    "starter_code": "# Сектор 12: Кортежи и множества\n# Кортеж хранит постоянный участок маршрута, set - набор целей.\n\nhero.scan()\n\nroute_tuple = (\"right\", \"right\")\ntargets = set([\"gem\", \"key\"])\n",
+    "solution_code": "route_tuple = (\"right\", \"right\", \"right\", \"right\")\ntargets = set([\"gem\", \"key\"])\n\nfor step in route_tuple:\n    hero.move(step)\nhero.collect()\n\nfor step in route_tuple:\n    hero.move(step)\nhero.collect()\n\nfor i in range(8):\n    hero.move_left()\n\nhero.move_down()\nhero.move_down()\nhero.collect()\nhero.move_right()\nhero.move_right()\n\nif hero.has_item(\"key\"):\n    hero.open_gate()\n\nfor i in range(5):\n    hero.move_right()\n\nif hero.sees_enemy():\n    hero.attack()\n\nfor i in range(4):\n    hero.move_right()\nhero.move_up()\nhero.move_up()\n",
+    "hint": "Используй route_tuple = (...) для маршрута и set([...]) для набора целей.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 12 восстановлен: Кортежи и множества.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 3: данные и структуры",
+    "difficulty": "лёгкая",
+    "min_steps": 36,
+    "objectives": [
+      "использовать кортеж маршрута",
+      "задать множество целей",
+      "собрать ключи/кристаллы и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Верхняя линия собирает два G, но ключ лежит снизу у старта. Вернись, открой D и проверь баг через if."
+    ],
+    "icon": "res://assets/icons/levels/12_files_small.png"
+  },
+  {
+    "level": 13,
+    "title": "Сектор 13: Словари",
+    "topic": "Словари",
+    "mechanic": "словарь маршрутов для веток карты",
+    "briefing": "Разветвлённая карта сектора описана словарём. Ключ словаря выбирает нужную ветку маршрута: верхний кристалл, нижний ключ, терминал и выход.",
+    "goal": "собрать ключи и кристаллы на разветвлённой карте, активировать терминал, убрать баг и выйти",
+    "grid": [
+      "###############",
+      "#P..G.......GX#",
+      "#.............#",
+      "#K..D.S..E....#",
+      "#...G.........#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "route_map",
+        "[\""
+      ]
+    },
+    "starter_code": "# Сектор 13: Словари\n# Словарь связывает имя ветки и список команд.\n\nhero.scan()\n\nroute_map = {\"upper\": [\"right\", \"right\"], \"exit\": [\"right\"]}\n",
+    "solution_code": "def follow(route):\n    for step in route:\n        if step == \"collect\":\n            hero.collect()\n        elif step == \"attack\":\n            hero.attack()\n        elif step == \"open\":\n            hero.open_gate()\n        elif step == \"activate\":\n            hero.activate()\n        else:\n            hero.move(step)\n\nroute_map = {\"upper\": [\"right\", \"right\", \"right\", \"collect\", \"left\", \"left\", \"left\"], \"lower\": [\"down\", \"down\", \"collect\", \"down\", \"right\", \"right\", \"right\", \"collect\"], \"exit\": [\"left\", \"left\", \"left\", \"up\", \"right\", \"right\", \"open\", \"right\", \"right\", \"right\", \"activate\", \"right\", \"right\", \"attack\", \"right\", \"right\", \"right\", \"right\", \"up\", \"up\", \"collect\", \"right\"]}\n\nfollow(route_map[\"upper\"])\nfollow(route_map[\"lower\"])\nfollow(route_map[\"exit\"])\n",
+    "hint": "Создай route_map и обращайся к маршрутам по ключам: route_map[\"upper\"], route_map[\"lower\"].",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 13 восстановлен: Словари.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 3: данные и структуры",
+    "difficulty": "средняя",
+    "min_steps": 42,
+    "objectives": [
+      "использовать словарь маршрутов",
+      "выбрать ветки по ключу",
+      "собрать объекты и восстановить сектор"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Разбей путь функцией go(). Нужны верхний G, нижний K/G, терминал S, баг E, шлюз D и правый G."
+    ],
+    "icon": "res://assets/icons/levels/13_exceptions_small.png"
+  },
+  {
+    "level": 14,
+    "title": "Сектор 14: Модули",
+    "topic": "Модули",
+    "mechanic": "загрузка маршрута из учебного модуля",
+    "briefing": "Сектор модулей показывает, как повторно использовать готовый маршрут. Маршрут берётся из учебного модуля через module.load_route().",
+    "goal": "сначала обезвредить баг и активировать терминал, затем пройти нижний коридор с ключом и кристаллами",
+    "grid": [
+      "###############",
+      "#P..E...S....X#",
+      "#.............#",
+      "#G....D...K.G.#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "module.load_route"
+      ]
+    },
+    "starter_code": "# Сектор 14: Модули\n# Маршрут можно получить из отдельного учебного модуля.\n\nhero.scan()\n\nscript = module.load_route(\"sector_14\")\n# for action in script:\n#     ...\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nscript = module.load_route(\"sector_14\")\n\nfor action in script:\n    apply(action)\n",
+    "hint": "Загрузи script = module.load_route(\"sector_14\") и выполни действия из списка.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 14 восстановлен: Модули.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: module.load_route(\"sector_14\") возвращает список действий учебного модуля.",
+    "chapter": "Глава 3: данные и структуры",
+    "difficulty": "средняя",
+    "min_steps": 34,
+    "objectives": [
+      "загрузить маршрут через module.load_route()",
+      "выполнить команды из модуля",
+      "активировать терминал и собрать данные"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Терминал находится наверху, но кристаллы и ключ лежат снизу. Перед S стоит баг, его нужно убрать."
+    ],
+    "icon": "res://assets/icons/levels/14_comprehensions_small.png"
+  },
+  {
+    "level": 15,
+    "title": "Сектор 15: Файлы",
+    "topic": "Файлы",
+    "mechanic": "чтение команд из файла маршрута",
+    "briefing": "В секторе файлов команды героя хранятся как строки условного файла route_15.txt. Код читает строки и выполняет их последовательно.",
+    "goal": "собрать серию кристаллов в длинном коридоре; без цикла решение получится слишком длинным",
+    "grid": [
+      "###############",
+      "#P.G.G.G.G...X#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "source_contains": [
+        "file.read_lines"
+      ]
+    },
+    "starter_code": "# Сектор 15: Файлы\n# Строки маршрута загружаются из учебного файла.\n\nhero.scan()\n\nlines = file.read_lines(\"sector_15.txt\")\n# for action in lines:\n#     ...\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nlines = file.read_lines(\"sector_15.txt\")\n\nfor action in lines:\n    apply(action)\n",
+    "hint": "Используй file.read_lines(\"sector_15.txt\"), затем выполни каждую строку как действие.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 15 восстановлен: Файлы.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: file.read_lines(\"sector_15.txt\") возвращает строки маршрута.",
+    "chapter": "Глава 3: данные и структуры",
+    "difficulty": "средняя",
+    "min_steps": 3,
+    "objectives": [
+      "прочитать маршрут через file.read_lines()",
+      "обработать строки файла циклом",
+      "собрать все кристаллы"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Используй while hero.can_move(\"right\"). После каждого шага проверяй hero.near(\"gem\") и собирай кристалл."
+    ],
+    "icon": "res://assets/icons/levels/15_oop_basics_small.png"
+  },
+  {
+    "level": 16,
+    "title": "Сектор 16: Исключения",
+    "topic": "Исключения",
+    "mechanic": "защищённое выполнение действия",
+    "briefing": "Сектор исключений показывает идею безопасного блока: потенциально рискованные действия выполняются внутри try, а except оставлен для аварийного отчёта.",
+    "goal": "получить ключ, открыть шлюз и выйти из сектора",
+    "grid": [
+      "##########",
+      "#P.KD...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "source_contains": [
+        "try:",
+        "except"
+      ]
+    },
+    "starter_code": "# Сектор 16: Исключения\n# Используй защищённый блок try/except для рискованных действий.\n\nhero.scan()\n\ntry:\n    # команды героя\n    pass\nexcept:\n    hero.status()\n",
+    "solution_code": "try:\n    for i in range(2):\n        hero.move_right()\n\n    hero.collect()\n\n    if hero.has_key():\n        hero.open_gate()\n\n    for i in range(5):\n        hero.move_right()\nexcept:\n    hero.status()\n",
+    "hint": "Оберни открытие шлюза и движение в try. Если ключ взят правильно, except не понадобится.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 16 восстановлен: Исключения.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 4: функции и алгоритмы",
+    "difficulty": "средняя",
+    "min_steps": 3,
+    "objectives": [
+      "использовать try/except как модель защищённого выполнения",
+      "получить ключ",
+      "открыть шлюз и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Ключ лежит перед шлюзом. Собери его командой hero.collect(), а затем открой дверь через hero.open_gate()."
+    ],
+    "icon": "res://assets/icons/levels/16_oop_advanced_small.png"
+  },
+  {
+    "level": 17,
+    "title": "Сектор 17: Генераторы маршрутов",
+    "topic": "Генераторы маршрутов",
+    "mechanic": "генератор маршрута",
+    "briefing": "Маршрут сектора создаётся генератором generate_route(). Игрок получает список действий и выполняет его в цикле.",
+    "goal": "устранить баг, который блокирует путь, и дойти до X",
+    "grid": [
+      "##########",
+      "#P.E....X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "defeat_all": true,
+      "source_contains": [
+        "generate_route"
+      ]
+    },
+    "starter_code": "# Сектор 17: Генераторы маршрутов\n# Генератор выдаёт последовательность действий.\n\nhero.scan()\n\nroute = generate_route(\"sector_17\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nroute = generate_route(\"sector_17\")\n\nfor action in route:\n    apply(action)\n",
+    "hint": "Получи route = generate_route(\"sector_17\") и обработай каждое действие.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 17 восстановлен: Генераторы маршрутов.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: generate_route(\"sector_17\") создаёт список действий маршрута.",
+    "chapter": "Глава 4: функции и алгоритмы",
+    "difficulty": "средняя",
+    "min_steps": 2,
+    "objectives": [
+      "получить маршрут через generate_route()",
+      "выполнить сгенерированные действия",
+      "устранить баг и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Баг стоит рядом после первого шага. Проверь hero.sees_enemy() и вызови hero.attack(), иначе проход останется заблокирован."
+    ],
+    "icon": "res://assets/icons/levels/17_adv_functions_small.png"
+  },
+  {
+    "level": 18,
+    "title": "Сектор 18: ООП: методы",
+    "topic": "ООП: методы",
+    "mechanic": "метод объекта-контроллера",
+    "briefing": "В секторе ООП маршрут получает объект-контроллер. Вызов controller.plan() имитирует метод, который возвращает план движения героя.",
+    "goal": "сначала терминал и шлюз, затем нижняя ветка с багом и ключом, после этого кристалл и выход",
+    "grid": [
+      "##############",
+      "#P.S..D...G.X#",
+      "#............#",
+      "#.E...K......#",
+      "##############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "controller.plan"
+      ]
+    },
+    "starter_code": "# Сектор 18: ООП: методы\n# Контроллер возвращает план через метод plan().\n\nhero.scan()\n\nplan = controller.plan(\"sector_18\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nplan = controller.plan(\"sector_18\")\n\nfor action in plan:\n    apply(action)\n",
+    "hint": "Используй controller.plan(\"sector_18\") и выполни полученный план.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 18 восстановлен: ООП: методы.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: controller.plan(\"sector_18\") имитирует метод объекта-контроллера.",
+    "chapter": "Глава 4: функции и алгоритмы",
+    "difficulty": "средняя",
+    "min_steps": 34,
+    "objectives": [
+      "использовать метод controller.plan()",
+      "обработать план действий",
+      "завершить ветки сектора"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "После S открой D, но не выходи сразу. Через вертикальный проход нужно спуститься к багу и ключу."
+    ],
+    "icon": "res://assets/icons/levels/18_generators_small.png"
+  },
+  {
+    "level": 19,
+    "title": "Сектор 19: ООП: состояние",
+    "topic": "ООП: состояние",
+    "mechanic": "состояние прохождения в словаре",
+    "briefing": "Сектор состояния показывает, что маршрут может зависеть от сохранённых признаков. Словарь state фиксирует фазу прохождения и используется рядом с действиями героя.",
+    "goal": "пройти большую карту с тупиками: два кристалла, ключ, шлюз, баг и терминал",
+    "grid": [
+      "################",
+      "#P..G.......G.X#",
+      "#..............#",
+      "#K...D....E.S..#",
+      "################"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "state ="
+      ]
+    },
+    "starter_code": "# Сектор 19: ООП: состояние\n# Состояние хранит фазу прохождения.\n\nhero.scan()\n\nstate = {\"phase\": \"collect\"}\n",
+    "solution_code": "state = {\"phase\": \"collect\"}\n\ndef go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ngo(\"right\", 3)\nhero.collect()\ngo(\"left\", 3)\ngo(\"down\", 2)\nhero.collect()\ngo(\"right\", 3)\nhero.open_gate()\ngo(\"right\", 5)\nif hero.sees_enemy():\n    hero.attack()\ngo(\"right\", 2)\nhero.activate()\ngo(\"up\", 2)\nhero.move_right()\nhero.collect()\ngo(\"right\", 1)\nhero.move_right()\n",
+    "hint": "Создай state = {\"phase\": \"collect\"}. Это связывает сектор с темой состояния объекта.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 19 восстановлен: ООП: состояние.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 4: функции и алгоритмы",
+    "difficulty": "средняя",
+    "min_steps": 33,
+    "objectives": [
+      "задать словарь состояния",
+      "использовать состояние вместе с маршрутом",
+      "собрать цели и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Это уже лабиринт: сначала верхний G, затем нижний ключ, открой D, устрани E, активируй S и поднимись к правому G."
+    ],
+    "icon": "res://assets/icons/levels/19_decorators_small.png"
+  },
+  {
+    "level": 20,
+    "title": "Сектор 20: Алгоритмы",
+    "topic": "Алгоритмы",
+    "mechanic": "алгоритм поиска маршрута",
+    "briefing": "Сектор алгоритмов использует условный поиск кратчайшего маршрута. algorithm.shortest_path() возвращает готовый план действий по карте.",
+    "goal": "использовать условие для бага, открыть шлюз и забрать кристалл на отдельной ветке",
+    "grid": [
+      "###############",
+      "#P......G...X.#",
+      "#.............#",
+      "#...E.K..D....#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "source_contains": [
+        "algorithm.shortest_path"
+      ]
+    },
+    "starter_code": "# Сектор 20: Алгоритмы\n# Алгоритм возвращает маршрут по карте.\n\nhero.scan()\n\nplan = algorithm.shortest_path(\"sector_20\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nplan = algorithm.shortest_path(\"sector_20\")\n\nfor action in plan:\n    apply(action)\n",
+    "hint": "Получи plan = algorithm.shortest_path(\"sector_20\") и выполни действия через apply().",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 20 восстановлен: Алгоритмы.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: algorithm.shortest_path(\"sector_20\") возвращает план маршрута.",
+    "chapter": "Глава 4: функции и алгоритмы",
+    "difficulty": "средняя",
+    "min_steps": 24,
+    "objectives": [
+      "использовать algorithm.shortest_path()",
+      "выполнить найденный маршрут",
+      "открыть шлюз и собрать кристаллы"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Ключ справа снизу, баг слева снизу, а G сверху. После ключа вернись к D, открой её и поднимайся."
+    ],
+    "icon": "res://assets/icons/levels/20_final_small.png"
+  },
+  {
+    "level": 21,
+    "title": "Сектор 21: Отладка",
+    "topic": "Отладка",
+    "mechanic": "отладочный журнал и безопасная атака",
+    "briefing": "Сектор отладки требует логировать этапы маршрута. debug.log() добавляет записи в журнал симуляции, а safe_attack() показывает проверку перед действием.",
+    "goal": "отладочный сектор: два бага, ключ, терминал, шлюз и два кристалла",
+    "grid": [
+      "################",
+      "#P..E..S..D...X#",
+      "#..............#",
+      "#G...K....E.G..#",
+      "################"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "debug.log"
+      ]
+    },
+    "starter_code": "# Сектор 21: Отладка\n# Записывай важные этапы в debug.log().\n\nhero.scan()\n\ndebug.log(\"старт отладки\")\n",
+    "solution_code": "def safe_attack():\n    if hero.sees_enemy():\n        hero.attack()\n\ndebug.log(\"старт отладки\")\nhero.move_right()\nhero.move_right()\nsafe_attack()\n\ndebug.log(\"терминал\")\nfor i in range(3):\n    hero.move_right()\nhero.activate()\n\nfor i in range(5):\n    hero.move_left()\nhero.move_down()\nhero.move_down()\nhero.collect()\nfor i in range(4):\n    hero.move_right()\nhero.collect()\nfor i in range(4):\n    hero.move_right()\nsafe_attack()\nhero.move_right()\nhero.move_right()\nhero.collect()\nhero.move_up()\nhero.move_up()\nhero.open_gate()\n\ndebug.log(\"выход\")\nfor i in range(3):\n    hero.move_right()\n",
+    "hint": "Добавь debug.log(\"...\") перед ключевыми участками и используй safe_attack().",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 21 восстановлен: Отладка.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: debug.log(\"текст\") добавляет запись в журнал симуляции.",
+    "chapter": "Глава 5: отладка и устойчивость",
+    "difficulty": "средняя",
+    "min_steps": 41,
+    "objectives": [
+      "использовать debug.log()",
+      "проверять атаку через функцию",
+      "завершить отладочный сектор"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Сделай функцию safe_attack(). На карте два бага: один перед терминалом, второй в нижнем коридоре."
+    ],
+    "icon": "res://assets/icons/levels/21_extended_small.png"
+  },
+  {
+    "level": 22,
+    "title": "Сектор 22: Работа с данными",
+    "topic": "Работа с данными",
+    "mechanic": "загрузка набора данных маршрута",
+    "briefing": "Сектор работы с данными использует data.load(): маршрут хранится как набор данных, который код загружает и обрабатывает циклом.",
+    "goal": "собрать кристалл данных и дойти до выхода X",
+    "grid": [
+      "##########",
+      "#P..G...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "source_contains": [
+        "data.load"
+      ]
+    },
+    "starter_code": "# Сектор 22: Работа с данными\n# Набор данных содержит действия маршрута.\n\nhero.scan()\n\nrecords = data.load(\"dataset_22\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nrecords = data.load(\"dataset_22\")\n\nfor action in records:\n    apply(action)\n",
+    "hint": "Получай records = data.load(\"dataset_22\") и выполняй действия из набора.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 22 восстановлен: Работа с данными.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: data.load(\"dataset_22\") возвращает учебный набор действий.",
+    "chapter": "Глава 5: отладка и устойчивость",
+    "difficulty": "средняя",
+    "min_steps": 2,
+    "objectives": [
+      "загрузить данные через data.load()",
+      "обработать набор циклом",
+      "собрать кристалл и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Кристалл находится на пути. Сначала дойди до него, вызови hero.collect(), затем продолжай движение к X."
+    ],
+    "icon": "res://assets/icons/levels/22_extended_small.png"
+  },
+  {
+    "level": 23,
+    "title": "Сектор 23: Вложенные циклы",
+    "topic": "Вложенные циклы",
+    "mechanic": "вложенные циклы для повторяющихся участков",
+    "briefing": "В секторе вложенных циклов короткий маршрут специально оформляется двумя циклами: внешний задаёт участок, внутренний повторяет шаги.",
+    "goal": "получить ключ, открыть шлюз и выйти из сектора",
+    "grid": [
+      "##########",
+      "#P.KD...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "source_contains": [
+        "for row",
+        "for column"
+      ]
+    },
+    "starter_code": "# Сектор 23: Вложенные циклы\n# Внешний цикл выбирает участок, внутренний выполняет шаги.\n\nhero.scan()\n\nfor row in range(1):\n    for column in range(2):\n        hero.move_right()\n",
+    "solution_code": "for row in range(1):\n    for column in range(2):\n        hero.move_right()\n\nhero.collect()\nhero.open_gate()\n\nfor row in range(1):\n    for column in range(5):\n        hero.move_right()\n",
+    "hint": "Используй два for: внешний для участка, внутренний для шагов вправо.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 23 восстановлен: Вложенные циклы.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 5: отладка и устойчивость",
+    "difficulty": "сложная",
+    "min_steps": 9,
+    "objectives": [
+      "использовать вложенный цикл",
+      "получить ключ и открыть шлюз",
+      "выйти из сектора"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Ключ лежит перед шлюзом. Собери его командой hero.collect(), а затем открой дверь через hero.open_gate()."
+    ],
+    "icon": "res://assets/icons/levels/23_extended_small.png"
+  },
+  {
+    "level": 24,
+    "title": "Сектор 24: Композиция функций",
+    "topic": "Композиция функций",
+    "mechanic": "композиция функций на разветвлённой карте",
+    "briefing": "Глава 5: отладка и устойчивость. Композиция функций применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "скомпоновать функции движения: верхний кристалл, нижний ключ, терминал, баг, шлюз и финальный кристалл",
+    "grid": [
+      "###############",
+      "#P..G..D....X.#",
+      "#.............#",
+      "#K.....S..E.G.#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true
+    },
+    "starter_code": "# Сектор 24: Композиция функций\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример функции:\n# def go_right(count):\n#     for i in range(count):\n#         hero.move_right()\n",
+    "solution_code": "def go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ngo(\"right\", 3)\nhero.collect()\ngo(\"left\", 3)\ngo(\"down\", 2)\nhero.collect()\ngo(\"up\", 2)\ngo(\"right\", 5)\nhero.open_gate()\ngo(\"left\", 2)\ngo(\"down\", 2)\ngo(\"right\", 3)\nhero.activate()\ngo(\"right\", 2)\nif hero.sees_enemy():\n    hero.attack()\ngo(\"right\", 2)\nhero.collect()\ngo(\"left\", 2)\ngo(\"up\", 2)\ngo(\"right\", 3)\n",
+    "hint": "Сделай go(direction, count), иначе маршрут будет тяжело читать. Нужно вернуться к D после нижней ветки.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 24 восстановлен: Композиция функций.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 5: отладка и устойчивость",
+    "difficulty": "сложная",
+    "min_steps": 41,
+    "objectives": [
+      "изучить уникальную карту сектора, а не идти по прямому коридору",
+      "выполнить все условия победы: предметы, баги, шлюзы и терминалы по требованиям уровня",
+      "использовать тему уровня в коде: цикл, условие или функцию там, где маршрут повторяется"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Сделай go(direction, count), иначе маршрут будет тяжело читать. Нужно вернуться к D после нижней ветки."
+    ],
+    "icon": "res://assets/icons/levels/24_extended_small.png"
+  },
+  {
+    "level": 25,
+    "title": "Сектор 25: Проверка условий",
+    "topic": "Проверка условий",
+    "mechanic": "if на двух угрозах",
+    "briefing": "Глава 5: отладка и устойчивость. Проверка условий применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "проверять условия перед атакой, собрать два кристалла, активировать терминал, взять ключ и открыть шлюз",
+    "grid": [
+      "###############",
+      "#P.E....G..D.X#",
+      "#.............#",
+      "#..E..S..K.G..#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true
+    },
+    "starter_code": "# Сектор 25: Проверка условий\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример условия:\n# if hero.sees_enemy():\n#     hero.attack()\n",
+    "solution_code": "hero.move_right()\nif hero.sees_enemy():\n    hero.attack()\nhero.move_left()\nhero.move_down()\nhero.move_down()\nhero.move_right()\nif hero.sees_enemy():\n    hero.attack()\nfor i in range(4):\n    hero.move_right()\nhero.activate()\nfor i in range(3):\n    hero.move_right()\nhero.collect()\nhero.move_right()\nhero.collect()\nhero.move_left()\nhero.move_left()\nhero.move_up()\nhero.move_up()\nhero.collect()\nhero.move_right()\nhero.move_right()\nhero.open_gate()\nfor i in range(3):\n    hero.move_right()\n",
+    "hint": "Проверка условий важна дважды: один баг сверху, второй внизу. После нижней ветки поднимись за верхним G и шлюзом.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 25 восстановлен: Проверка условий.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 5: отладка и устойчивость",
+    "difficulty": "сложная",
+    "min_steps": 36,
+    "objectives": [
+      "изучить уникальную карту сектора, а не идти по прямому коридору",
+      "выполнить все условия победы: предметы, баги, шлюзы и терминалы по требованиям уровня",
+      "использовать тему уровня в коде: цикл, условие или функцию там, где маршрут повторяется"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Проверка условий важна дважды: один баг сверху, второй внизу. После нижней ветки поднимись за верхним G и шлюзом."
+    ],
+    "icon": "res://assets/icons/levels/25_extended_small.png"
+  },
+  {
+    "level": 26,
+    "title": "Сектор 26: Рефакторинг",
+    "topic": "Рефакторинг",
+    "mechanic": "рефакторинг маршрута функциями",
+    "briefing": "Глава 6: проектный код. Рефакторинг применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "отрефакторить длинный маршрут функцией: ключ, шлюз, терминал, баг и два кристалла",
+    "grid": [
+      "################",
+      "#P....G........#",
+      "#.............X#",
+      "#K..D........G.#",
+      "#...S..E.......#",
+      "################"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true
+    },
+    "starter_code": "# Сектор 26: Рефакторинг\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример функции:\n# def go_right(count):\n#     for i in range(count):\n#         hero.move_right()\n",
+    "solution_code": "def go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ngo(\"right\", 5)\nhero.collect()\ngo(\"left\", 5)\ngo(\"down\", 2)\nhero.collect()\ngo(\"right\", 2)\nhero.open_gate()\ngo(\"left\", 2)\ngo(\"down\", 1)\ngo(\"right\", 3)\nhero.activate()\ngo(\"right\", 2)\nif hero.sees_enemy():\n    hero.attack()\ngo(\"right\", 7)\ngo(\"up\", 1)\nhero.collect()\ngo(\"left\", 2)\ngo(\"up\", 2)\ngo(\"right\", 3)\ngo(\"down\", 1)\n",
+    "hint": "Функция go() здесь реально упрощает чтение. Карта большая: сначала верхний G, потом ключ и шлюз, затем нижний терминал и баг.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 26 восстановлен: Рефакторинг.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 6: проектный код",
+    "difficulty": "сложная",
+    "min_steps": 48,
+    "objectives": [
+      "изучить уникальную карту сектора, а не идти по прямому коридору",
+      "выполнить все условия победы: предметы, баги, шлюзы и терминалы по требованиям уровня",
+      "использовать тему уровня в коде: цикл, условие или функцию там, где маршрут повторяется"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Функция go() здесь реально упрощает чтение. Карта большая: сначала верхний G, потом ключ и шлюз, затем нижний терминал и баг."
+    ],
+    "icon": "res://assets/icons/levels/26_extended_small.png"
+  },
+  {
+    "level": 27,
+    "title": "Сектор 27: Чистый код",
+    "topic": "Чистый код",
+    "mechanic": "чистый цикл вместо однообразных команд",
+    "briefing": "Глава 6: проектный код. Чистый код применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "чистый код: пройти длинную линию и собрать три кристалла коротким циклом с проверкой",
+    "grid": [
+      "###############",
+      "#P..G..G..G..X#",
+      "#.............#",
+      "###############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true
+    },
+    "starter_code": "# Сектор 27: Чистый код\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример цикла:\n# for step in ['right', 'right']:\n#     hero.move(step)\n",
+    "solution_code": "while hero.can_move(\"right\"):\n    hero.move_right()\n    if hero.near(\"gem\"):\n        hero.collect()\n",
+    "hint": "Не расписывай каждый шаг. while + if near(gem) делает решение коротким и чистым.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Сектор 27 восстановлен: Чистый код.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 6: проектный код",
+    "difficulty": "сложная",
+    "min_steps": 3,
+    "objectives": [
+      "изучить уникальную карту сектора, а не идти по прямому коридору",
+      "выполнить все условия победы: предметы, баги, шлюзы и терминалы по требованиям уровня",
+      "использовать тему уровня в коде: цикл, условие или функцию там, где маршрут повторяется"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Не расписывай каждый шаг. while + if near(gem) делает решение коротким и чистым."
+    ],
+    "icon": "res://assets/icons/levels/27_extended_small.png"
+  },
+  {
+    "level": 28,
+    "title": "Сектор 28: Тестирование",
+    "topic": "Тестирование",
+    "mechanic": "тестовый сценарий прохождения",
+    "briefing": "Сектор тестирования начинается с проверки цели. test.assert_goal() имитирует тестовый сценарий, после которого выполняется полный маршрут.",
+    "goal": "тестовый полигон: три кристалла, ключ, терминал, два бага, шлюз и финальный маршрут",
+    "grid": [
+      "################",
+      "#P..E..S..D...X#",
+      "#..............#",
+      "#G..K....E..G..#",
+      "#..............#",
+      "#...G..........#",
+      "################"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "test.assert_goal"
+      ]
+    },
+    "starter_code": "# Сектор 28: Тестирование\n# Сначала задай проверку цели тестового полигона.\n\nhero.scan()\n\ntest.assert_goal(\"collect_all\")\n",
+    "solution_code": "test.assert_goal(\"collect_all\")\n\ndef go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ndef safe_attack():\n    if hero.sees_enemy():\n        hero.attack()\n\ngo(\"right\", 2)\nsafe_attack()\ngo(\"right\", 4)\nhero.activate()\ngo(\"left\", 6)\ngo(\"down\", 2)\nhero.collect()\ngo(\"right\", 3)\nhero.collect()\ngo(\"right\", 4)\nsafe_attack()\ngo(\"right\", 3)\nhero.collect()\ngo(\"left\", 9)\ngo(\"down\", 2)\ngo(\"right\", 3)\nhero.collect()\ngo(\"right\", 6)\ngo(\"up\", 4)\nhero.open_gate()\ngo(\"right\", 3)\n",
+    "hint": "Добавь test.assert_goal(\"collect_all\") перед маршрутом, затем пройди полигон.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 28 восстановлен: Тестирование.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: test.assert_goal(\"collect_all\") имитирует проверку ожидаемого результата.",
+    "chapter": "Глава 6: проектный код",
+    "difficulty": "сложная",
+    "min_steps": 57,
+    "objectives": [
+      "задать проверку через test.assert_goal()",
+      "пройти полигон действий",
+      "собрать цели и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Это мини-финал главы. Используй go() и safe_attack(), иначе легко ошибиться в длинном маршруте."
+    ],
+    "icon": "res://assets/icons/levels/28_extended_small.png"
+  },
+  {
+    "level": 29,
+    "title": "Сектор 29: JSON и конфигурации",
+    "topic": "JSON и конфигурации",
+    "mechanic": "маршрут из JSON-конфигурации",
+    "briefing": "Сектор JSON загружает маршрут из конфигурационного файла. json.load() возвращает список действий для героя.",
+    "goal": "собрать кристалл данных и дойти до выхода X",
+    "grid": [
+      "##########",
+      "#P..G...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "source_contains": [
+        "json.load"
+      ]
+    },
+    "starter_code": "# Сектор 29: JSON и конфигурации\n# Конфигурация JSON хранит маршрут сектора.\n\nhero.scan()\n\nroute = json.load(\"sector_29.json\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nroute = json.load(\"sector_29.json\")\n\nfor action in route:\n    apply(action)\n",
+    "hint": "Используй route = json.load(\"sector_29.json\") и выполни действия.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 29 восстановлен: JSON и конфигурации.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: json.load(\"sector_29.json\") возвращает список действий из учебной конфигурации.",
+    "chapter": "Глава 6: проектный код",
+    "difficulty": "сложная",
+    "min_steps": 2,
+    "objectives": [
+      "загрузить маршрут через json.load()",
+      "обработать JSON-конфигурацию циклом",
+      "собрать кристалл и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Кристалл находится на пути. Сначала дойди до него, вызови hero.collect(), затем продолжай движение к X."
+    ],
+    "icon": "res://assets/icons/levels/29_extended_small.png"
+  },
+  {
+    "level": 30,
+    "title": "Сектор 30: API-шлюз",
+    "topic": "API-запросы",
+    "mechanic": "получение маршрута и токена через API",
+    "briefing": "В секторе 30 доступ к шлюзу выдаётся не вручную, а через учебный API. Программа должна запросить токен доступа, получить маршрут от сервера сектора, активировать терминал, забрать ключ и открыть шлюз.",
+    "goal": "получить API-токен, пройти маршрут, активировать терминал, взять ключ, открыть шлюз и выйти",
+    "grid": [
+      "#############",
+      "#P..S.KD...X#",
+      "#############"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "use_api": true
+    },
+    "starter_code": "# Сектор 30: API-шлюз\n# Получи токен и маршрут через API-запросы.\n\nhero.scan()\n\ntoken = api.get(\"/auth\")\nroute = api.get(\"/sector/30/route\")\n",
+    "solution_code": "def follow(route):\n    for step in route:\n        hero.move(step)\n        if hero.near(\"terminal\"):\n            hero.activate()\n        if hero.near(\"key\"):\n            hero.collect()\n\ntoken = api.get(\"/auth\")\nroute = api.get(\"/sector/30/route\")\n\nfollow(route)\n\nif token == \"ACCESS_GRANTED\" and hero.has_key():\n    hero.open_gate()\n\nexit_route = api.get(\"/sector/30/exit\")\nfollow(exit_route)\n",
+    "hint": "Сначала получи token = api.get(\"/auth\") и route = api.get(\"/sector/30/route\"). Пройди маршрут циклом, активируй терминал, собери ключ, затем открой шлюз и запроси маршрут к выходу.",
+    "failure_hint": "Проверь, что в коде есть api.get(...), терминал активирован, ключ собран, шлюз открыт, а герой дошёл до X.",
+    "success_message": "API-шлюз восстановлен: токен принят, маршрут выполнен, сектор открыт.",
+    "command_reference": "API уровня: api.get('/auth'), api.get('/sector/30/route'), api.get('/sector/30/exit').\nКоманды героя: hero.move(direction), hero.collect(), hero.open_gate(), hero.activate().\nПроверки: hero.near('terminal'), hero.near('key'), hero.has_key().\nPython: функции def, for, if, переменные и списки.\nТема сектора: api.get(\"/auth\") выдаёт токен, api.get(\"/sector/30/route\") возвращает маршрут.",
+    "chapter": "Глава 6: проектный код",
+    "difficulty": "сложная",
+    "min_steps": 14,
+    "objectives": [
+      "получить токен через api.get(\"/auth\")",
+      "получить маршрут через API",
+      "активировать терминал, взять ключ, открыть шлюз и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "API в этом секторе возвращает данные для алгоритма: token и route.",
+      "Сохрани route в переменную и пройди его циклом for step in route.",
+      "После маршрута проверь token == 'ACCESS_GRANTED', открой шлюз и запроси api.get('/sector/30/exit')."
+    ],
+    "icon": "res://assets/icons/levels/30_extended_small.png"
+  },
+  {
+    "level": 31,
+    "title": "Сектор 31: Автоматизация",
+    "topic": "Автоматизация",
+    "mechanic": "автоматический план действий",
+    "briefing": "Сектор автоматизации использует automation.plan(): код получает готовый план задачи и выполняет его без ручного перечисления всех команд.",
+    "goal": "устранить баг, который блокирует путь, и дойти до X",
+    "grid": [
+      "##########",
+      "#P.E....X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "defeat_all": true,
+      "source_contains": [
+        "automation.plan"
+      ]
+    },
+    "starter_code": "# Сектор 31: Автоматизация\n# План действий формируется автоматизацией.\n\nhero.scan()\n\njob = automation.plan(\"sector_31\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\njob = automation.plan(\"sector_31\")\n\nfor action in job:\n    apply(action)\n",
+    "hint": "Получай job = automation.plan(\"sector_31\") и выполни действия.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 31 восстановлен: Автоматизация.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: automation.plan(\"sector_31\") возвращает список действий задачи.",
+    "chapter": "Глава 7: финальное ядро",
+    "difficulty": "финальная",
+    "min_steps": 2,
+    "objectives": [
+      "получить план через automation.plan()",
+      "обработать автоматический список действий",
+      "устранить баг и выйти"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Баг стоит рядом после первого шага. Проверь hero.sees_enemy() и вызови hero.attack(), иначе проход останется заблокирован."
+    ],
+    "icon": "res://assets/icons/levels/31_extended_small.png"
+  },
+  {
+    "level": 32,
+    "title": "Сектор 32: Пакеты проекта",
+    "topic": "Пакеты проекта",
+    "mechanic": "маршрут из пакета проекта",
+    "briefing": "Сектор пакетов показывает импортируемую логику: package.load() берёт маршрут из условного пакета проекта.",
+    "goal": "активировать терминал, открыть шлюз и выйти",
+    "grid": [
+      "##########",
+      "#P.SD...X#",
+      "##########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "source_contains": [
+        "package.load"
+      ]
+    },
+    "starter_code": "# Сектор 32: Пакеты проекта\n# Пакет проекта отдаёт маршрут сектора.\n\nhero.scan()\n\nroute = package.load(\"pyquest.routing\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nroute = package.load(\"pyquest.routing\")\n\nfor action in route:\n    apply(action)\n",
+    "hint": "Используй package.load(\"pyquest.routing\") и выполни полученные действия.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 32 восстановлен: Пакеты проекта.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: package.load(\"pyquest.routing\") возвращает маршрут из учебного пакета.",
+    "chapter": "Глава 7: финальное ядро",
+    "difficulty": "финальная",
+    "min_steps": 3,
+    "objectives": [
+      "загрузить маршрут через package.load()",
+      "использовать пакетную структуру",
+      "активировать терминал и открыть шлюз"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Шлюз откроется без ключа, если перед этим активировать терминал S командой hero.activate()."
+    ],
+    "icon": "res://assets/icons/levels/32_extended_small.png"
+  },
+  {
+    "level": 33,
+    "title": "Сектор 33: Асинхронное мышление",
+    "topic": "Асинхронное мышление",
+    "mechanic": "асинхронная загрузка маршрута",
+    "briefing": "Сектор асинхронного мышления имитирует получение маршрута из отложенного источника. async.fetch() возвращает план, который затем выполняется по шагам.",
+    "goal": "собрать верхний кристалл, найти ключ в нижнем контуре, открыть шлюз и забрать второй кристалл",
+    "grid": [
+      "###########",
+      "#P..G.....#",
+      "###.###..##",
+      "#K..D..GX.#",
+      "###########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "open_doors": true,
+      "source_contains": [
+        "async.fetch"
+      ]
+    },
+    "starter_code": "# Сектор 33: Асинхронное мышление\n# Маршрут приходит из отложенного источника.\n\nhero.scan()\n\nroute = async.fetch(\"sector_33\")\n",
+    "solution_code": "def apply(action):\n    if action == \"collect\":\n        hero.collect()\n    elif action == \"attack\":\n        hero.attack()\n    elif action == \"open\":\n        hero.open_gate()\n    elif action == \"activate\":\n        hero.activate()\n    else:\n        hero.move(action)\n\nroute = async.fetch(\"sector_33\")\n\nfor action in route:\n    apply(action)\n",
+    "hint": "Получай route = async.fetch(\"sector_33\") и обрабатывай маршрут после загрузки.",
+    "failure_hint": "Проверь маршрут и убедись, что в коде используется конструкция темы сектора, указанная в брифинге.",
+    "success_message": "Сектор 33 восстановлен: Асинхронное мышление.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.\nТема сектора: async.fetch(\"sector_33\") имитирует асинхронное получение маршрута.",
+    "chapter": "Глава 7: финальное ядро",
+    "difficulty": "финальная",
+    "min_steps": 21,
+    "objectives": [
+      "получить маршрут через async.fetch()",
+      "выполнить действия после загрузки",
+      "собрать цели и открыть шлюз"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Здесь два контура. Сначала забери верхний кристалл, вернись к проходу вниз, возьми ключ, открой D и только потом иди к X."
+    ],
+    "icon": "res://assets/icons/levels/33_extended_small.png"
+  },
+  {
+    "level": 34,
+    "title": "Сектор 34: SQLite-запрос",
+    "topic": "SQLite и выборка маршрута",
+    "mechanic": "SQL-запрос к таблице маршрутов",
+    "briefing": "В секторе 34 маршрут хранится в учебной таблице SQLite. Программа должна составить SELECT-запрос, получить список направлений из db.query(...) и выполнить результат как алгоритм движения героя.",
+    "goal": "получить маршрут SQL-запросом, собрать кристалл данных и дойти до выхода",
+    "grid": [
+      "###########",
+      "#P.....G.X#",
+      "###########"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "use_sql": true
+    },
+    "starter_code": "# Сектор 34: SQLite-запрос\n# Получи маршрут SQL-запросом из таблицы route_34.\n\nhero.scan()\n\nsql = \"SELECT direction FROM route_34 ORDER BY step\"\nroute = db.query(sql)\n",
+    "solution_code": "sql = \"SELECT direction FROM route_34 ORDER BY step\"\nroute = db.query(sql)\n\nfor direction in route:\n    hero.move(direction)\n    if hero.near(\"gem\"):\n        hero.collect()\n",
+    "hint": "Составь SELECT-запрос, получи route = db.query(sql), затем пройди список направлений через for direction in route.",
+    "failure_hint": "Проверь, что используется db.query(...) или SELECT-запрос. Без SQL-запроса сектор не засчитывается как SQLite-уровень.",
+    "success_message": "SQLite-сектор восстановлен: маршрут выбран из таблицы и выполнен.",
+    "command_reference": "SQLite уровня: db.query('SELECT direction FROM route_34 ORDER BY step') возвращает список направлений.\nКоманды героя: hero.move(direction), hero.collect().\nПроверки: hero.near('gem'), hero.at_exit().\nPython: переменные, строки, список, for.\nТема сектора: db.query(sql) возвращает направления из учебной таблицы route_34.",
+    "chapter": "Глава 7: финальное ядро",
+    "difficulty": "финальная",
+    "min_steps": 8,
+    "objectives": [
+      "составить SQL-запрос SELECT",
+      "получить маршрут через db.query()",
+      "собрать кристалл и дойти до выхода"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "В этом секторе маршрут не задаётся вручную, а выбирается из учебной таблицы.",
+      "Используй sql = 'SELECT direction FROM route_34 ORDER BY step' и route = db.query(sql).",
+      "Пройди route циклом for и внутри цикла проверяй hero.near('gem')."
+    ],
+    "icon": "res://assets/icons/levels/34_extended_small.png"
+  },
+  {
+    "level": 35,
+    "title": "Сектор 35: Финальное ядро",
+    "topic": "Финальное ядро",
+    "mechanic": "боссовый сектор: функции, циклы и все игровые действия",
+    "briefing": "Глава 7: финальное ядро. Финальное ядро применяется как инструмент управления героем. Сектор повреждён: маршрут, объекты и условия победы проверяются симулятором.",
+    "goal": "финальное ядро: восстановить терминалы, открыть шлюзы, устранить баги, собрать ключи и кристаллы, затем сообщить о восстановлении ядра",
+    "grid": [
+      "###################",
+      "#P..E..S..D....G.X#",
+      "#.................#",
+      "#G..K....E..S..D..#",
+      "#.................#",
+      "#...G...K..D..E...#",
+      "#.................#",
+      "#...S....G....K...#",
+      "###################"
+    ],
+    "legend": "P - герой, X - выход, G - кристалл данных, K - ключ, D - шлюз, E - баг, S - терминал, # - стена, ~ - блокировка.",
+    "requirements": {
+      "reach_exit": true,
+      "collect_all": true,
+      "defeat_all": true,
+      "open_doors": true,
+      "activate_terminal": true,
+      "use_function": true,
+      "use_loop": true,
+      "say_text": "Ядро PyQuest восстановлено"
+    },
+    "starter_code": "# Сектор 35: Финальное ядро\n# Напиши программу, которая управляет героем на карте.\n# Нажми RUN, чтобы увидеть выполнение по шагам.\n\nhero.scan()\n# продолжи код ниже\n\n# пример функции:\n# def go_right(count):\n#     for i in range(count):\n#         hero.move_right()\n",
+    "solution_code": "def go(direction, count):\n    for i in range(count):\n        hero.move(direction)\n\ndef safe_attack():\n    if hero.sees_enemy():\n        hero.attack()\n\ngo(\"right\", 2)\nsafe_attack()\ngo(\"right\", 4)\nhero.activate()\ngo(\"right\", 2)\nhero.open_gate()\ngo(\"left\", 8)\ngo(\"down\", 2)\nhero.collect()\ngo(\"right\", 3)\nhero.collect()\ngo(\"right\", 4)\nsafe_attack()\ngo(\"right\", 3)\nhero.activate()\ngo(\"right\", 3)\nhero.open_gate()\ngo(\"left\", 6)\ngo(\"down\", 2)\ngo(\"left\", 4)\nhero.collect()\ngo(\"right\", 4)\nhero.collect()\ngo(\"right\", 2)\nhero.open_gate()\ngo(\"right\", 3)\nsafe_attack()\ngo(\"left\", 10)\ngo(\"down\", 2)\ngo(\"right\", 1)\nhero.activate()\ngo(\"right\", 5)\nhero.collect()\ngo(\"right\", 5)\nhero.collect()\ngo(\"left\", 4)\ngo(\"up\", 6)\ngo(\"right\", 4)\nhero.collect()\ngo(\"right\", 3)\nhero.say(\"Ядро PyQuest восстановлено\")\n",
+    "hint": "Финал требует функцию, цикл и сообщение hero.say(\"Ядро PyQuest восстановлено\"). Разбей маршрут на go() и safe_attack(), иначе сектор слишком длинный.",
+    "failure_hint": "Проверь последний кадр симуляции: цель сектора должна быть выполнена полностью. Если рядом ключ, баг, шлюз или терминал - нужна отдельная команда действия.",
+    "success_message": "Ядро PyQuest восстановлено. Финальный сектор закрыт, кампания завершена.",
+    "command_reference": "Команды героя: hero.move('right'), hero.move_left(), hero.move_right(), hero.move_up(), hero.move_down(), hero.collect(), hero.attack(), hero.open_gate(), hero.activate(), hero.scan(), hero.status().\nПроверки: hero.can_move('right'), hero.near('gem'), hero.near('enemy'), hero.has_item('key'), hero.at_exit().\nPython: переменные, списки, for/range, while, if/elif/else, def, +=, сравнения.",
+    "chapter": "Глава 7: финальное ядро",
+    "difficulty": "финальная",
+    "min_steps": 82,
+    "objectives": [
+      "использовать функцию def для сокращения маршрута",
+      "использовать цикл for или while для повторяющихся шагов",
+      "активировать терминалы и открыть шлюзы",
+      "собрать все ключи и кристаллы",
+      "устранить все баги",
+      "завершить сектор сообщением hero.say(\"Ядро PyQuest восстановлено\")"
+    ],
+    "unlock_reward": "доступ к следующему сектору и запись результата в карту кампании",
+    "hint_steps": [
+      "Сначала посмотри на карту: P - старт, X - выход. Предметы можно собирать, если герой стоит рядом с ними или на их клетке.",
+      "Раздели решение на три части: маршрут до объекта, действие с объектом, маршрут к выходу. Повторяющиеся шаги лучше оформить через for или функцию.",
+      "Финал требует функцию, цикл и сообщение hero.say(\"Ядро PyQuest восстановлено\"). Разбей маршрут на go() и safe_attack(), иначе сектор слишком длинный."
+    ],
+    "icon": "res://assets/icons/levels/35_extended_small.png"
+  }
+]

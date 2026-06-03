@@ -18,18 +18,18 @@ func _ready() -> void:
 	_update_status()
 	call_deferred("_start_menu_music")
 
-
 func _start_menu_music() -> void:
 	AudioManager.play_music_for_scene("res://scenes/MainMenu.tscn")
 
 func _update_status() -> void:
 	continue_button.disabled = not SaveManager.has_save()
-	status_label.text = "Очки: %d   Ошибки: %d   Открыт уровень: %d   Заданий пройдено: %d/%d" % [
+	status_label.text = "PyQuest: Code Adventure\n%s\n%s\nОчки: %d   Ошибки: %d   Открыт сектор: %d   Запусков кода: %d" % [
+		CodeWorldService.get_campaign_title(),
+		CodeWorldService.get_campaign_progress_text(),
 		AppState.score,
 		AppState.mistakes,
 		AppState.max_unlocked_level,
-		ContentRepository.get_completed_task_count(),
-		ContentRepository.get_total_task_count()
+		AppState.get_total_code_attempts()
 	]
 
 func _on_new_game_pressed() -> void:
@@ -39,7 +39,7 @@ func _on_new_game_pressed() -> void:
 
 func _on_continue_pressed() -> void:
 	SaveManager.load_game()
-	SceneRouter.go_to_level_map()
+	SceneRouter.go_to_code_game()
 
 func _on_level_map_pressed() -> void:
 	SceneRouter.go_to_level_map()

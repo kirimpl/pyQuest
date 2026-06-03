@@ -25,7 +25,7 @@ func evaluate(task: Dictionary, payload: Variant) -> Dictionary:
 				"message": "Неизвестный тип задания: %s" % task_type,
 				"explanation": str(task.get("explanation", "")),
 				"score": 0,
-				"console_output": "Task type error: %s" % task_type
+				"console_output": "Task type error: %s" % [task_type]
 			}
 
 func get_task_type_title(task_type: String) -> String:

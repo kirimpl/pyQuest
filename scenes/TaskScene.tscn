@@ -77,6 +77,51 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
+[node name="MissionPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MissionMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="MissionBox" type="VBoxContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionPanel/MissionMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MissionTitleLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionPanel/MissionMargin/MissionBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Игровая миссия"
+autowrap_mode = 3
+
+[node name="MissionBriefLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionPanel/MissionMargin/MissionBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Описание игрового действия"
+autowrap_mode = 3
+
+[node name="MissionStateLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionPanel/MissionMargin/MissionBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Состояние миссии"
+autowrap_mode = 3
+
+[node name="MissionInventoryLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionPanel/MissionMargin/MissionBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Инвентарь"
+autowrap_mode = 3
+
 [node name="QuestionPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
 layout_mode = 2
 size_flags_horizontal = 3

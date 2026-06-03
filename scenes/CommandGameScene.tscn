@@ -1,0 +1,240 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/command_game_controller.gd" id="1_controller"]
+[ext_resource type="Theme" path="res://theme/PyQuestTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/components/AnimatedBackground.tscn" id="3_bg"]
+
+[node name="CommandGameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_controller")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("3_bg")]
+layout_mode = 1
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RootLayout" type="HBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="LeftPanel" type="PanelContainer" parent="RootMargin/RootLayout"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftMargin" type="MarginContainer" parent="RootMargin/RootLayout/LeftPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="LeftBox" type="VBoxContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="HeaderBox" type="VBoxContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/HeaderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Сектор"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SubtitleLabel" type="Label" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/HeaderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Игровая механика"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ProgressLabel" type="Label" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/HeaderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Прогресс"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MapPanel" type="PanelContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="MapMargin" type="MarginContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/MapPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MapGrid" type="GridContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/MapPanel/MapMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 8
+
+[node name="LegendLabel" type="Label" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Легенда"
+autowrap_mode = 3
+
+[node name="LogPanel" type="PanelContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LogScroll" type="ScrollContainer" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/LogPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LogLabel" type="Label" parent="RootMargin/RootLayout/LeftPanel/LeftMargin/LeftBox/LogPanel/LogScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "Лог выполнения"
+autowrap_mode = 3
+
+[node name="RightPanel" type="PanelContainer" parent="RootMargin/RootLayout"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RightMargin" type="MarginContainer" parent="RootMargin/RootLayout/RightPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="RightBox" type="VBoxContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="BriefingPanel" type="PanelContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BriefingMargin" type="MarginContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/BriefingPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BriefingLabel" type="Label" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/BriefingPanel/BriefingMargin"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Брифинг"
+autowrap_mode = 3
+
+[node name="CommandPanel" type="PanelContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CommandMargin" type="MarginContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/CommandPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CommandReferenceLabel" type="Label" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/CommandPanel/CommandMargin"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Команды"
+autowrap_mode = 3
+
+[node name="CodeEditor" type="TextEdit" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
+placeholder_text = "Собери программу героя здесь. Ctrl+Enter - RUN, F1 - сканер"
+
+[node name="ButtonRow" type="HBoxContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="RunButton" type="Button" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/ButtonRow"]
+custom_minimum_size = Vector2(78, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "RUN"
+
+[node name="ResetButton" type="Button" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/ButtonRow"]
+custom_minimum_size = Vector2(78, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Сброс"
+
+[node name="SolutionButton" type="Button" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/ButtonRow"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Сканер"
+
+[node name="NextButton" type="Button" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/ButtonRow"]
+custom_minimum_size = Vector2(112, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Дальше"
+disabled = true
+
+[node name="MenuButton" type="Button" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/ButtonRow"]
+custom_minimum_size = Vector2(78, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Меню"
+
+[node name="OutputPanel" type="PanelContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="OutputScroll" type="ScrollContainer" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/OutputPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="OutputLabel" type="Label" parent="RootMargin/RootLayout/RightPanel/RightMargin/RightBox/OutputPanel/OutputScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Результат"
+autowrap_mode = 3

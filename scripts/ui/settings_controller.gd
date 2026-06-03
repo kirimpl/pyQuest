@@ -20,18 +20,21 @@ func _ready() -> void:
 	_update_view()
 
 func _update_view() -> void:
-	music_button.text = "Музыка: %s" % ("включена" if AppState.music_enabled else "выключена")
-	sound_button.text = "Звуки: %s" % ("включены" if AppState.sound_enabled else "выключены")
+	music_button.text = "Музыка: %s" % ["включена" if AppState.music_enabled else "выключена"]
+	sound_button.text = "Звуки: %s" % ["включены" if AppState.sound_enabled else "выключены"]
 	music_slider.set_value_no_signal(AppState.music_volume * 100.0)
 	sound_slider.set_value_no_signal(AppState.sound_volume * 100.0)
 	music_volume_label.text = "Громкость музыки: %d%%" % int(round(AppState.music_volume * 100.0))
 	sound_volume_label.text = "Громкость звуков: %d%%" % int(round(AppState.sound_volume * 100.0))
-	status_label.text = "Прогресс: %d уровней, %d/%d заданий, %d очков, %d ошибок" % [
+	status_label.text = "Прогресс кампании: %d секторов, %d/%d узлов, %d очков, %d ошибок, энергия %d/%d, тревога %d%%" % [
 		AppState.completed_levels.size(),
 		ContentRepository.get_completed_task_count(),
 		ContentRepository.get_total_task_count(),
 		AppState.score,
-		AppState.mistakes
+		AppState.mistakes,
+		AppState.player_energy,
+		AppState.max_player_energy,
+		AppState.system_alarm
 	]
 
 func _on_music_pressed() -> void:

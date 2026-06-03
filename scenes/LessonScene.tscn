@@ -93,6 +93,24 @@ theme_override_font_sizes/font_size = 19
 text = "Теоретический материал"
 autowrap_mode = 3
 
+[node name="MissionBriefingPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MissionBriefingMargin" type="MarginContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionBriefingPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="MissionBriefingLabel" type="Label" parent="RootMargin/RootLayout/ContentScroll/ContentBox/MissionBriefingPanel/MissionBriefingMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Брифинг миссии"
+autowrap_mode = 3
+
 [node name="ObjectivesPanel" type="PanelContainer" parent="RootMargin/RootLayout/ContentScroll/ContentBox"]
 layout_mode = 2
 size_flags_horizontal = 3

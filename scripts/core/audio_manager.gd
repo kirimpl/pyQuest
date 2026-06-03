@@ -13,6 +13,14 @@ const HOVER_SFX_PATH: String = "res://assets/audio/sfx/ui_hover.wav"
 const SUCCESS_SFX_PATH: String = "res://assets/audio/sfx/success.wav"
 const ERROR_SFX_PATH: String = "res://assets/audio/sfx/error.wav"
 const BACK_SFX_PATH: String = "res://assets/audio/sfx/back.wav"
+const RUN_SFX_PATH: String = "res://assets/audio/sfx/run.wav"
+const STEP_SFX_PATH: String = "res://assets/audio/sfx/step.wav"
+const COLLECT_SFX_PATH: String = "res://assets/audio/sfx/collect.wav"
+const GATE_SFX_PATH: String = "res://assets/audio/sfx/gate.wav"
+const TERMINAL_SFX_PATH: String = "res://assets/audio/sfx/terminal.wav"
+const ATTACK_SFX_PATH: String = "res://assets/audio/sfx/attack.wav"
+const VICTORY_SFX_PATH: String = "res://assets/audio/sfx/victory.wav"
+const FAIL_SFX_PATH: String = "res://assets/audio/sfx/fail.wav"
 
 var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
@@ -172,6 +180,30 @@ func play_error() -> void:
 
 func play_back() -> void:
 	_play_sfx(BACK_SFX_PATH, sfx_player)
+
+func play_run() -> void:
+	_play_sfx(RUN_SFX_PATH, sfx_player)
+
+func play_step() -> void:
+	_play_sfx(STEP_SFX_PATH, sfx_player)
+
+func play_collect() -> void:
+	_play_sfx(COLLECT_SFX_PATH, sfx_player)
+
+func play_gate() -> void:
+	_play_sfx(GATE_SFX_PATH, sfx_player)
+
+func play_terminal() -> void:
+	_play_sfx(TERMINAL_SFX_PATH, sfx_player)
+
+func play_attack() -> void:
+	_play_sfx(ATTACK_SFX_PATH, sfx_player)
+
+func play_victory() -> void:
+	_play_sfx(VICTORY_SFX_PATH, sfx_player)
+
+func play_fail() -> void:
+	_play_sfx(FAIL_SFX_PATH, sfx_player)
 
 func _play_sfx(path: String, player: AudioStreamPlayer) -> void:
 	if not AppState.sound_enabled:

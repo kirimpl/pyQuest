@@ -22,7 +22,11 @@ ContentRepository="*res://scripts/core/content_repository.gd"
 SaveManager="*res://scripts/core/save_manager.gd"
 SceneRouter="*res://scripts/core/scene_router.gd"
 TaskEvaluator="*res://scripts/core/task_evaluator.gd"
+MissionService="*res://scripts/core/mission_service.gd"
+LessonInteractionService="*res://scripts/core/lesson_interaction_service.gd"
+CodeWorldService="*res://scripts/core/code_world_service.gd"
 AudioManager="*res://scripts/core/audio_manager.gd"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [debug]
 
@@ -35,6 +39,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 [physics]
 

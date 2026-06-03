@@ -5,6 +5,10 @@ const CODE_TOKEN_SCENE: PackedScene = preload("res://scenes/components/CodeToken
 
 @onready var title_label: Label = %TitleLabel
 @onready var type_label: Label = %TypeLabel
+@onready var mission_title_label: Label = %MissionTitleLabel
+@onready var mission_brief_label: Label = %MissionBriefLabel
+@onready var mission_state_label: Label = %MissionStateLabel
+@onready var mission_inventory_label: Label = %MissionInventoryLabel
 @onready var question_label: Label = %QuestionLabel
 @onready var hint_panel: PanelContainer = %HintPanel
 @onready var hint_label: Label = %HintLabel
@@ -33,6 +37,7 @@ const CODE_TOKEN_SCENE: PackedScene = preload("res://scenes/components/CodeToken
 
 var task: Dictionary = {}
 var answered: bool = false
+var hint_used: bool = false
 var selected_code_indexes: Array[int] = []
 var selected_code_lines: Array[String] = []
 var task_count: int = 1
@@ -54,6 +59,7 @@ func _load_task() -> void:
 	AppState.selected_task_index = clampi(AppState.selected_task_index, 0, task_count - 1)
 	task = ContentRepository.get_task_for_level(AppState.selected_level, AppState.selected_task_index)
 	answered = false
+	hint_used = false
 	selected_code_indexes.clear()
 	selected_code_lines.clear()
 	result_panel.visible = false
@@ -62,15 +68,47 @@ func _load_task() -> void:
 	result_button.disabled = true
 	result_button.text = "К результату"
 
-	title_label.text = "Уровень %d. Задание %d/%d" % [AppState.selected_level, AppState.selected_task_index + 1, task_count]
-	question_label.text = str(task.get("question", ""))
-	type_label.text = TaskEvaluator.get_task_type_title(str(task.get("type", "single_choice")))
+	title_label.text = "%s · узел %d/%d" % [MissionService.get_sector_name(AppState.selected_level), AppState.selected_task_index + 1, task_count]
+	question_label.text = _build_terminal_question_text()
+	type_label.text = _build_type_label_text(str(task.get("type", "single_choice")))
+	_setup_mission_panel()
 	_setup_hint()
 	_show_task_panel(str(task.get("type", "single_choice")))
 
+func _setup_mission_panel() -> void:
+	mission_title_label.text = MissionService.get_event_title(AppState.selected_level, AppState.selected_task_index)
+	mission_brief_label.text = MissionService.get_event_brief(AppState.selected_level, AppState.selected_task_index, task)
+	mission_state_label.text = MissionService.get_event_status(AppState.selected_level, AppState.selected_task_index, task_count)
+	mission_inventory_label.text = MissionService.get_inventory_text()
+
+func _build_terminal_question_text() -> String:
+	var lines: PackedStringArray = PackedStringArray()
+	lines.append("Командный терминал Python запрашивает действие:")
+	lines.append("")
+	lines.append(str(task.get("question", "")))
+	return "\n".join(lines)
+
+func _build_type_label_text(task_type: String) -> String:
+	var role: String = str(task.get("gameplay_role", "terminal"))
+	var role_title: String = "Терминал"
+	match role:
+		"diagnostic":
+			role_title = "Диагностика"
+		"gateway":
+			role_title = "Открытие шлюза"
+		"repair":
+			role_title = "Ремонт модуля"
+		"routing":
+			role_title = "Маршрутизация"
+		"core":
+			role_title = "Стабилизация ядра"
+		_:
+			role_title = "Терминал"
+	return "%s · %s" % [role_title, TaskEvaluator.get_task_type_title(task_type)]
+
 func _setup_hint() -> void:
 	var hint_text: String = str(task.get("hint", ""))
-	hint_label.text = "Подсказка: " + hint_text
+	hint_label.text = "Подсказка терминала: " + hint_text + "\n\nШтраф: за выполнение узла с подсказкой начисляется меньше очков и слабее восстанавливается энергия."
 	hint_panel.visible = false
 	hint_button.disabled = hint_text.strip_edges().is_empty()
 	hint_button.text = "Подсказка"
@@ -78,6 +116,7 @@ func _setup_hint() -> void:
 func _on_hint_pressed() -> void:
 	if hint_button.disabled:
 		return
+	hint_used = true
 	hint_panel.visible = not hint_panel.visible
 	hint_button.text = "Скрыть" if hint_panel.visible else "Подсказка"
 
@@ -86,6 +125,7 @@ func _show_task_panel(task_type: String) -> void:
 	text_input_panel.visible = false
 	code_order_panel.visible = false
 	code_input_panel.visible = false
+	code_input_panel.set_locked(false)
 
 	match task_type:
 		"single_choice", "find_error":
@@ -138,6 +178,7 @@ func _build_code_tokens(tokens: Array) -> void:
 
 func _setup_code_input() -> void:
 	code_input_panel.setup(task)
+	code_input_panel.set_locked(false)
 
 func _on_answer_selected(index: int) -> void:
 	if answered:
@@ -210,11 +251,25 @@ func _apply_evaluation(evaluation: Dictionary) -> void:
 	var task_id: int = int(task.get("id", -1))
 	var is_final_task: bool = AppState.selected_task_index >= task_count - 1
 	var level_completed_now: bool = false
+	var event_title: String = MissionService.get_event_title(AppState.selected_level, AppState.selected_task_index)
+	var mission_title: String = MissionService.get_mission_title(AppState.selected_level)
+	var mission_outcome_text: String = MissionService.build_outcome_text(AppState.selected_level, AppState.selected_task_index, is_correct, task)
+	var artifact: String = str(task.get("mission_artifact", ""))
+	var mission_result: Dictionary = AppState.register_mission_attempt(
+		AppState.selected_level,
+		task_id,
+		is_correct,
+		mission_title,
+		event_title,
+		mission_outcome_text,
+		artifact,
+		hint_used
+	)
 
 	if is_correct:
 		var first_time_task_completed: bool = AppState.complete_task(task_id)
 		if first_time_task_completed:
-			awarded_score = points
+			awarded_score = _calculate_awarded_score(points)
 			AppState.add_score(awarded_score)
 
 		if is_final_task:
@@ -222,20 +277,22 @@ func _apply_evaluation(evaluation: Dictionary) -> void:
 			level_completed_now = true
 
 		if message.is_empty():
-			message = "Верно! +%d очков." % awarded_score
+			message = "Узел восстановлен. +%d очков." % [awarded_score]
 		elif awarded_score > 0:
-			message += " +%d очков." % awarded_score
+			message += " +%d очков." % [awarded_score]
 		else:
-			message += " Задание уже было пройдено, очки повторно не начислены."
+			message += " Этот узел уже был очищен, очки повторно не начислены."
 
+		if hint_used and awarded_score > 0:
+			message += " Подсказка помогла, но снизила награду."
 		if not is_final_task:
-			message += " Открыто следующее задание этого уровня."
+			message += " Открыт следующий узел сектора."
 		AudioManager.play_success()
 	else:
 		AppState.add_mistake()
 		AudioManager.play_error()
 		if message.is_empty():
-			message = "Неверно."
+			message = "Команда отклонена. Узел не очищен."
 
 	AppState.set_last_result(
 		is_correct,
@@ -247,9 +304,32 @@ func _apply_evaluation(evaluation: Dictionary) -> void:
 		AppState.selected_task_index,
 		task_count
 	)
-	result_label.text = "%s\n\n%s" % [message, explanation]
+	result_label.text = _build_result_panel_text(message, explanation, mission_result, mission_outcome_text)
 	result_button.text = "Далее" if is_correct else "К разбору"
+	mission_state_label.text = MissionService.get_event_status(AppState.selected_level, AppState.selected_task_index, task_count)
+	mission_inventory_label.text = MissionService.get_inventory_text()
 	_save_and_lock_task()
+
+func _calculate_awarded_score(points: int) -> int:
+	if not hint_used:
+		return points
+	return maxi(1, int(round(float(points) * 0.6)))
+
+func _build_result_panel_text(message: String, explanation: String, mission_result: Dictionary, mission_outcome_text: String) -> String:
+	var lines: PackedStringArray = PackedStringArray()
+	lines.append(message)
+	lines.append("")
+	lines.append("Игровое действие:")
+	lines.append(mission_outcome_text)
+	lines.append("Энергия: %s%d   Тревога: %s%d" % ["+" if int(mission_result.get("energy_delta", 0)) >= 0 else "", int(mission_result.get("energy_delta", 0)), "+" if int(mission_result.get("alarm_delta", 0)) >= 0 else "", int(mission_result.get("alarm_delta", 0))])
+	if bool(mission_result.get("artifact_added", false)):
+		lines.append("Получен артефакт: %s" % str(mission_result.get("artifact", "")))
+	if bool(mission_result.get("emergency_reboot", false)):
+		lines.append("Аварийная перезагрузка: энергия восстановлена до безопасного минимума, но тревога выросла.")
+	lines.append("")
+	lines.append("Разбор Python:")
+	lines.append(explanation)
+	return "\n".join(lines)
 
 func _save_and_lock_task() -> void:
 	SaveManager.save_game()

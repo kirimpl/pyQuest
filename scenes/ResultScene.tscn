@@ -59,7 +59,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 44
-text = "Результат"
+text = "Результат узла"
 horizontal_alignment = 1
 
 [node name="SummaryLabel" type="Label" parent="RootMargin/RootBox/ResultPanel/ResultMargin/ContentBox"]
@@ -85,7 +85,7 @@ theme_override_constants/margin_bottom = 18
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
-text = "Разбор ответа"
+text = "Игровой итог и разбор Python"
 autowrap_mode = 3
 horizontal_alignment = 1
 

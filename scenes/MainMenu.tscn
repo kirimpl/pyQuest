@@ -82,13 +82,13 @@ text = "PyQuest"
 [node name="SubtitleLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/TopRow/TitleColumn" unique_id=846037846]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Игровой тренажёр по Python"
+text = "Code Adventure по Python"
 
 [node name="DescriptionLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=1634453842]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "Проходи кампанию, запускай код в учебном интерпретаторе, исправляй ошибки и открывай темы Python - от базы до продвинутых инструментов."
+text = "Пиши команды в стиле Python, управляй героем на карте, собирай предметы, открывай шлюзы и проходи игровые уровни."
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -107,7 +107,7 @@ theme_override_constants/margin_bottom = 9
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Очки: 0   Ошибки: 0   Открыт уровень: 1"
+text = "Кампания: энергия, тревога, очки и очищенные узлы"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -146,7 +146,7 @@ custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
-text = "Карта уровней"
+text = "Игровая кампания"
 
 [node name="CodexButton" type="Button" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox/MenuButtons" unique_id=161435129]
 unique_name_in_owner = true
@@ -175,5 +175,5 @@ text = "Выход"
 [node name="VersionLabel" type="Label" parent="RootMargin/MenuCenter/MenuPanel/MenuMargin/MainBox" unique_id=1905271354]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "v0.1 prototype"
+text = "Code Adventure build · programming game mode"
 horizontal_alignment = 1
